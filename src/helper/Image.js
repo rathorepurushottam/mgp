@@ -1,0 +1,65 @@
+export const splash = require('../../assets/images/splash.png');
+export const mychampLogo = require('../../assets/images/mychampLogo.png');
+export const check = require('../../assets/images/checkSign.png');
+export const BottomHomeIcon = require('../../assets/images/bottomHomeIcon.png')
+export const BottomRankIcon = require('../../assets/images/bottomRankingIcon.png')
+export const BottomShopIcon = require('../../assets/images/bottomshopIcon.png')
+export const BottomWalletIcon = require('../../assets/images/bottomwalletIcon.png')
+export const BottomProfileIcon = require('../../assets/images/bottomProfileIcon.png')
+export const DemoUser = require('../../assets/images/user.png')
+export const Gold = require('../../assets/images/gold.png')
+export const Notification = require('../../assets/images/notification.png')
+export const setting = require('../../assets/images/setting.png')
+export const plusIcon = require('../../assets/images/plus.png')
+export const banner = require('../../assets/images/banner.png')
+export const trophy = require('../../assets/images/trophy.png')
+export const CricketImage = require('../../assets/images/cricketImage.png')
+export const RummyImage = require('../../assets/images/RummyImage.png')
+export const LudoIMage = require('../../assets/images/ludoImage.png')
+export const SnakeGameImage = require('../../assets/images/SnakeGameIMage.png')
+export const CallBreakIMage = require('../../assets/images/callbreakImage.png')
+export const FootballImage = require('../../assets/images/football.png')
+export const backgroundLudo = require('../../assets/images/bg.png')
+export const LudoIconImage = require('../../assets/images/ludoIcon.png')
+export const multipleUser = require('../../assets/images/users.png')
+export const ludoImage1 = require('../../assets/images/ludoIMage1.png')
+export const rummyImage1 = require('../../assets/images/rummyIMage1.png')
+export const cricketImage1 = require('../../assets/images/cricketImage1.png')
+export const snakeGame1 = require('../../assets/images/snakeGame1.png')
+export const callBreakIMage1 = require('../../assets/images/callBreakimage1.png')
+export const classic = require('../../assets/images/classic.png')
+export const DiceImage = require('../../assets/images/dice.png')
+export const NumberIMage = require('../../assets/images/number.png')
+export const tournament = require('../../assets/images/tournament.png')
+export const ludobg = require('../../assets/images/ludobg.png')
+export const ludoIcon1 = require('../../assets/images/ludoIcon2.png')
+export const ludoIcon2 = require('../../assets/images/ludoIcon4.png')
+export const LudoIcon3 = require('../../assets/images/ludoIcon1.png')
+export const ludoIcon4 = require('../../assets/images/ludoIcon3.png')
+export const shopIcon = require('../../assets/images/shopIcon.png')
+export const Winners = require('../../assets/images/winners.png')
+export const Winnersbg = require('../../assets/images/winnerBg.png')
+export const prizeOne = require('../../assets/images/prize1.png')
+export const prizeTwo = require('../../assets/images/prize2.png')
+export const Prizethree = require('../../assets/images/prize3.png')
+export const prizeBack = require('../../assets/images/prizeBack.png')
+export const winnerUser = require('../../assets/images/winnerUser.png')
+
+
+
+
+
+
+
+// winnerBg.png
+
+
+
+
+
+
+
+
+
+
+
