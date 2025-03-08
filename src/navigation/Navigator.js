@@ -13,10 +13,19 @@ import Shop from '../screens/Shops/Shop';
 import Wallet from '../screens/Wallet/Wallet';
 import Profile from '../screens/Profile/Profile';
 import { colors } from '../theme/Colors';
-import { BottomHomeIcon, BottomProfileIcon, BottomRankIcon, BottomShopIcon, BottomWalletIcon } from '../helper/Image';
+import { BottomHomeIcon, BottomProfileIcon, BottomRankIcon, BottomShopIcon, BottomWalletIcon, setting } from '../helper/Image';
 import { Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import LudoMain from '../screens/LudoMain/LudoMain';
+import WithDraw from '../screens/withDraw/WithDraw';
+import TransactionHistory from '../screens/transactionHistory/TransactionHistory';
+import EditProfile from '../screens/editProfile/EditProfile';
+import LudoHistory from '../screens/ludoHistory/LudoHistory';
+import RummyHistory from '../screens/rummyHistory/RummyHistory';
+import InviteFriend from '../screens/InviteFriend/InviteFriend';
+import Settings from '../screens/settings/Settings';
+import KycScreen from '../screens/kycScreen/KycScreen';
+import VerifyAdhar from '../screens/VerifyAdhar/VerifyAdhar';
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -28,7 +37,13 @@ const RootStackScreen = () => {
       <Stack.Screen name="AUTHLoading" component={AuthLoading} />
       <Stack.Screen name="AUTHStack" component={AuthStack} />
       <Stack.Screen name="LudoMain" component={LudoMain}/>
-
+      <Stack.Screen name="EditProfile" component={EditProfile}/>
+      <Stack.Screen name="LudoHistory" component={LudoHistory}/>
+      <Stack.Screen name="RummyHistory" component={RummyHistory}/>
+      <Stack.Screen name="InviteFriend" component={InviteFriend}/>
+      <Stack.Screen name="Settings" component={Settings}/>
+      <Stack.Screen name="KycScreen" component={KycScreen}/>
+      <Stack.Screen name="VerifyAdhar" component={VerifyAdhar}/>
     </Stack.Navigator>
   );
 };
@@ -44,7 +59,6 @@ const AuthStack = () => {
       <Stack.Screen name={"MYBATTLEOTP"} component={Otp} />
       <Stack.Screen name={"VerifyOtp"} component={VerifyOtp} />
       <Stack.Screen name = {'BottomNavigation'} component={BottomNavigation}/>
-      
     </Stack.Navigator>
   );
 };
@@ -399,12 +413,16 @@ const WalletStack = ()=>{
     <Stack.Navigator
     screenOptions={{
       headerShown: false,
-    }}>
+    }}
+    >
   <Stack.Screen
     name={"WalletStack"}
     component={Wallet}
     options={{headerShown: false}}
     />
+      <Stack.Screen name={'WithDraw'} component={WithDraw}/>
+      <Stack.Screen name={'TransactionHistory'} component={TransactionHistory}/>
+
   </Stack.Navigator>
   )
 }

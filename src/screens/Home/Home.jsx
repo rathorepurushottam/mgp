@@ -6,10 +6,11 @@ import Slider from '../../common/SliderHome/Slider'
 import FastImage from 'react-native-fast-image'
 import { trophy } from '../../helper/Image'
 import GamesHome from '../../common/HomeGames/GamesHome'
+import { colors } from '../../theme/Colors'
 
 const Home = () => {
   return (
-       <LinearGradient colors={["#01025C", '#121269']} style={styles.container}>
+       <LinearGradient colors={[colors.BackgroundColorOne,colors.BackgroundColorTwo]} style={styles.container}>
         <HomeTopHeader/>
         <ScrollView showsVerticalScrollIndicator={false} style={{marginBottom:'30%'}}>
         <Slider/>
@@ -28,9 +29,6 @@ export default Home
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // paddingHorizontal: 20,
-    // alignItems: 'center',
-    // justifyContent: "center",
     width: '100%'
   },
   trophy:{

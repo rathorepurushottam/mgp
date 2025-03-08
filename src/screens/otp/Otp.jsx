@@ -81,7 +81,7 @@ const Otp = ({ route }) => {
 
             <View style={styles.miniContainer}>
               <Text style={styles.subHeading}>Incorrect Phone number?? </Text>
-              <TouchableOpacity><Text style={styles.resend}>Change</Text></TouchableOpacity>
+              <TouchableOpacity onPress={()=>navigation.goBack()}><Text style={styles.resend}>Change</Text></TouchableOpacity>
             </View>
           </View>
 

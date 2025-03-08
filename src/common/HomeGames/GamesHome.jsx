@@ -46,11 +46,11 @@ const styles = StyleSheet.create({
       borderWidth:4,
       borderColor:'#fff',
     //   overflow: 'hidden',
-    shadowColor: '#fff',
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.7,
-    shadowRadius: 15,
-    elevation: 15,
+    // shadowColor: '#fff',
+    // shadowOffset: { width: 0, height: 10 },
+    // shadowOpacity: 0.7,
+    // shadowRadius: 15,
+    // elevation: 15,
       
     },
     image: {

@@ -1,13 +1,13 @@
 import {CommonActions, StackActions} from '@react-navigation/native';
 import {DrawerActions} from '@react-navigation/native';
 
-let navigator: any;
+let navigator;
 
-function setTopLevelNavigator(navigatorRef: any) {
+function setTopLevelNavigator(navigatorRef) {
   navigator = navigatorRef;
 }
 
-function navigate(routeName: string, params?: object) {
+function navigate(routeName, params) {
   navigator.dispatch(
     CommonActions.navigate({
       name: routeName,
@@ -22,10 +22,10 @@ function pop(n = 1) {
     }),
   );
 }
-function push(routeName: string) {
+function push(routeName) {
   navigator.dispatch(StackActions.push(routeName));
 }
-function reset(route: string) {
+function reset(route) {
   navigator.dispatch(
     CommonActions.reset({
       index: 0,

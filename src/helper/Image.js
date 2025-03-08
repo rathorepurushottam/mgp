@@ -44,22 +44,31 @@ export const prizeTwo = require('../../assets/images/prize2.png')
 export const Prizethree = require('../../assets/images/prize3.png')
 export const prizeBack = require('../../assets/images/prizeBack.png')
 export const winnerUser = require('../../assets/images/winnerUser.png')
+export const giftImage = require('../../assets/images/GiftImage.png')
+export const paymentSetting = require('../../assets/images/paymentSetting.png')
+export const kycVerify = require('../../assets/images/kycVerify.png')
+export const tds = require('../../assets/images/tds.png')
+export const bankIcon = require('../../assets/images/bankIcon.png')
+export const upiIcons = require('../../assets/images/upiIcons.png')
+export const winningTrophy = require('../../assets/images/winningTrophy.png')
+export const videoGame = require('../../assets/images/videoGame.png')
+export const trophy2 = require('../../assets/images/trophy2.png')
+export const rummyImageProfile = require('../../assets/images/rummyProfile.png')
+export const ludoIMageProfile = require('../../assets/images/ludoProfile.png')
+export const EditIcon = require('../../assets/images/editIcon.png')
+export const userPhoto = require('../../assets/images/userPhoto.png')
+export const cameraIcon = require('../../assets/images/cameraIcon.png')
+export const galleryIcon = require('../../assets/images/galleryIcon.png')
+export const diceLudoImage = require('../../assets/images/diceLudoImage.png')
+export const rummyImageIcon = require('../../assets/images/rummyImageIcon.png')
+export const referAndEarn = require('../../assets/images/referAndEarn.png')
 
-
-
-
-
-
-
-// winnerBg.png
-
-
-
-
-
-
-
-
-
+export const kycIcon = require('../../assets/images/kycIcon.png')
+export const logOutIcon = require('../../assets/images/logOutIcon.png')
+export const musicIcon = require('../../assets/images/musicIcon.png')
+export const AboutUsIcon = require('../../assets/images/AboutUsIcon.png')
+export const soundIcon = require('../../assets/images/soundIcon.png')
+export const HelpIcon = require('../../assets/images/HelpIcon.png')
+export const PanIcon = require('../../assets/images/PanIcon.png')
 
 

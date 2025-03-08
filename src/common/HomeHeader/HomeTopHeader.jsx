@@ -3,10 +3,11 @@ import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import FastImage from 'react-native-fast-image'
 import { DemoUser, Gold, Notification, plusIcon, setting } from '../../helper/Image'
+import { colors } from '../../theme/Colors'
 
 const HomeTopHeader = () => {
 return (
-    <LinearGradient colors={["#01025C", '#121269']} style={styles.container}>
+    <LinearGradient colors={[colors.BackgroundColorOne,colors.BackgroundColorTwo]} style={styles.container}>
       <View style={styles.headerWrapper}>
 
         <View style={styles.userSection}>

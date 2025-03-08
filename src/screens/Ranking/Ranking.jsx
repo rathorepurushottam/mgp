@@ -6,14 +6,51 @@ import { SceneMap, TabBar, TabView } from 'react-native-tab-view'
 import { DailyTournament } from '../../../assets/DummyData/DummyData'
 import FastImage from 'react-native-fast-image'
 import { Winners, Winnersbg } from '../../helper/Image'
+import { colors } from '../../theme/Colors'
 const Screen = {
   Width: Dimensions.get('window').width,
   Height: Dimensions.get('window').height,
 };
 
+// export const RenderTabBar = (props) => {
+//   return (
+//       <TabBar
+//         {...props}
+//         renderLabel={({ route, focused }) => (
+//           <View
+//             style={{
+//               flexDirection: 'column',
+//               width: '100%',
+//               height: 38,
+//               justifyContent: 'space-evenly',
+//               paddingLeft:10,
+//             }}>
+//             <Text style={styles.tabLabel}>
+//               {route.title}
+//             </Text>
+//             {focused ? 
+//             <View
+//             style={{ height: 2, width: 70,color:'#fff' }}
+//             // start={{ x: 0, y: 1 }}
+//             // end={{ x: 1, y: 0 }}
+// >
+//             </View> :<View style={{width:Screen.Width/3.9, height:2}}></View>
+//             }
+//           </View>
+//         )}
+//         indicatorStyle={{ backgroundColor: 'transparent'}}
+//         scrollEnabled={!props.scrollEnabled ? props.scrollEnabled : true}
+//         tabStyle={[{ width: 'auto', }, props.tabStyle]}
+//         pressColor={'transparent'}
+//         style={[styles.tabbar, props.style]}
+//       />
+
+//   );
+// };
+
 const RankingCard = ({ item }) => (
   <View style={styles.rankingCard}>
-    <View style={{ backgroundColor: '#FFDBB8', height: 30, width: 60, alignItems: 'center', justifyContent: 'center', borderRadius: 20 }}>
+    <View style={styles.rankBack}>
       <Text style={styles.rank}>
         {item.rank <= 3 ? (
           <Image
@@ -36,10 +73,32 @@ const RankingList = () => (
     <ImageBackground source={Winnersbg} style={styles.logoMain}>
       <FastImage source={Winners} style={styles.logo} resizeMode='contain' />
     </ImageBackground>
+    <View style={styles.table}>
+      <View style={{marginLeft:10}}><Text style={styles.text}>Rank</Text></View>
+      <View style={styles.contain}>
+      <View><Text style={styles.text}>Name</Text></View>
+      <View><Text style={styles.text}>Win</Text></View>
+      </View>
+    </View>
     <FlatList
       data={DailyTournament}
       keyExtractor={(item) => item.id}
-      renderItem={({ item }) => <RankingCard item={item} />}
+      ListEmptyComponent={ 
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Text
+            style={{ textAlign: 'center',fontSize:14,
+            fontWeight:'500' }}>
+            {'Nothing to show.'}
+          </Text>
+        </View>
+        }
+      renderItem={({ item }) => <RankingCard item={item}
+       />}
     />
   </ScrollView>
 );
@@ -61,7 +120,7 @@ const Ranking = () => {
     third: FirstRoute,
   });
   return (
-    <LinearGradient colors={['#01025C', '#121269']} style={styles.container}>
+    <LinearGradient colors={[colors.BackgroundColorOne, colors.BackgroundColorTwo]} style={styles.container}>
       <ShopHeader title={"LEADERBOARD"} />
 
       <TabView
@@ -97,18 +156,13 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   logoMain: {
-    // width:"100%",
-    // height:200
     alignItems: 'center',
-    // resizeMode:'c'
   },
   logo: {
     height: 250,
     width: '80%',
-    // alignSelf:'center',
     marginVertical: 20,
     resizeMode: 'contain',
-    // marginTop:10
   },
   tabBar: {
     backgroundColor: 'transparent',
@@ -129,9 +183,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff',
     borderRadius: 20,
-    padding: 10,
+    paddingLeft: 5,
+    paddingRight:10,
+    paddingVertical:5,
     marginHorizontal: 20,
     marginVertical: 5,
+  },
+  rankBack:{ 
+    backgroundColor: '#FFDBB8', 
+    height: 40,
+    width: 60,
+    alignItems: 'center', 
+    justifyContent: 'center',
+    borderRadius: 20 
   },
   rank: {
     fontSize: 18,
@@ -162,25 +226,25 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#FF8C00',
   },
-  // container: {
-  //   flex: 1,
-  //   // paddingHorizontal: 20,
-  //   alignItems: 'center',
-  //   // justifyContent: "center",
-  //   width: '100%'
-  // },
-
+  table:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    // backgroundColor: '#fff',
+    borderRadius: 20,
+    paddingLeft: 5,
+    paddingRight:10,
+    paddingVertical:5,
+    marginHorizontal: 20,
+    marginVertical: 5,
+    justifyContent:'space-between'
+    // justifyContent:''
+  },
+  contain:{
+    flexDirection:'row',
+    width:'72%',
+    justifyContent:'space-between'
+  },
+  text:{color:'#ccc',fontWeight:"500"}
 })
 
 
-
-
-// <LinearGradient colors={["#01025C", '#121269']} style={styles.container}>
-//   <ShopHeader title={"LEADERBOARD"}/>
-//   <TabView
-//   navigationState={{ index, routes }}
-//   renderScene={renderScene}
-//   onIndexChange={setIndex}
-//   initialLayout={{ width: Screen.Width }}
-// />
-// </LinearGradient>

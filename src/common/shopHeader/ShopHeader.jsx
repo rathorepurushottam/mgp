@@ -27,7 +27,7 @@ export default ShopHeader
 const styles = StyleSheet.create({
      container:{
             backgroundColor:colors.backgroundHeader,
-            height:'7%',
+            height:50,
             width:'100%',
             flexDirection:"row",
             justifyContent:'space-between',

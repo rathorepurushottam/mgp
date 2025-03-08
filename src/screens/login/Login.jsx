@@ -7,19 +7,26 @@ import LinearGradient from 'react-native-linear-gradient'
 import CommonButton from '../../common/CommonButton/CommonButton'
 import NavigationService from '../../navigation/NavigationService'
 import { useNavigation } from '@react-navigation/native'
-import { toastAlert } from '../../helper/Utility'
+import { toastAlert, validateMobile } from '../../helper/Utility'
 import InputBox from '../../common/InputBox/InputBox'
 import { AppSafeAreaView } from '../../common/AppSafeAreaView/AppSafeAreaView'
+import TextInputBox from '../../common/textInputBox/TextInputBox'
 const Screen = Dimensions.get('window');
 
 const Login = () => {
   const navigation = useNavigation();
   const [mobileNumber, setMobileNumber] = useState("");
   const [error, setError] = useState('');
+  const [isReferal, setisReferal] = useState(false)
+  const [ReferalCode, setReferalCode] = useState('')
   const onSubmit = () => {
-    if (!mobileNumber || mobileNumber.length != 10) {
+    console.log(ReferalCode,"refercodeeee")
+    if (!mobileNumber) {
       toastAlert.showToastError('Please enter Mobile Number');
       setError('Please enter Mobile Number')
+    }else if(!validateMobile(mobileNumber)){
+      toastAlert.showToastError('InValid Number');
+      setError('InValid Number')
     }
     else {
       setError('');
@@ -28,48 +35,55 @@ const Login = () => {
   }
   return (
     <AppSafeAreaView statusColor={true}
-    light={true}>
-    <LinearGradient colors={["#01025C", '#02025A']} style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View>
-          <FastImage source={mychampLogo} style={styles.logo} resizeMode='contain' />
-        </View>
-        <View style={styles.content}>
-
-          <Text style={styles.heading}>Login/Signup</Text>
-          <Text style={styles.subHeading}>
-            Enter your mobile number to get started
-          </Text>
-          <InputBox val={mobileNumber} setVal={setMobileNumber} error={error} maxLength={10} />
-          {
-            error ?
-              <Text style={{ color: colors.ErrorColor, alignSelf: 'flex-start', marginBottom: '10%', fontSize: 11 }}>{error}</Text>
-              : ''
-          }
-
-          <View style={styles.referralContainer}>
-            <Text style={styles.referralText}>Have a referral code?</Text>
-            <TouchableOpacity>
-              <Text style={styles.enterCode}>Enter Code</Text>
-            </TouchableOpacity>
+      light={true}>
+      <LinearGradient colors={["#01025C", '#02025A']} style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View>
+            <FastImage source={mychampLogo} style={styles.logo} resizeMode='contain' />
           </View>
-
-
-          <Text style={styles.terms}>
-            By clicking "Get Started", you agree to our{" "}
-            <Text style={styles.link}>Terms and Conditions</Text> &{" "}
-            <Text style={styles.link}>Privacy Policy</Text>
-          </Text>
-
-          <CommonButton title={'Get Started'} onPress={onSubmit} />
-        </View>
-
-        <View style={{ marginTop: "10%", alignItems: 'center' }}>
-          <Text style={styles.footer}>Version 1.0.0</Text>
-          <Text style={styles.footer}>© MyChamp11. All Rights Reserved</Text>
-        </View>
-      </ScrollView>
-    </LinearGradient>
+          <View style={styles.content}>
+            <Text style={styles.heading}>Login/Signup</Text>
+            <Text style={styles.subHeading}>
+              Enter your mobile number to get started
+            </Text>
+            <InputBox val={mobileNumber} setVal={setMobileNumber} error={error} maxLength={10} />
+            {
+              error ?
+                <Text style={{ color: colors.ErrorColor, alignSelf: 'flex-start', marginBottom: '5%', fontSize: 11 }}>{error}</Text>
+                : ''
+            }
+            {
+              isReferal ?
+                <>
+                  <TextInput
+                    style={styles.input}
+                    placeholder={"Enter referral code"}
+                    placeholderTextColor={"#bbb"}
+                    value={ReferalCode}
+                    onChangeText={setReferalCode}
+                  />
+                </>
+                :
+                <View style={styles.referralContainer}>
+                  <Text style={styles.referralText}>Have a referral code?</Text>
+                  <TouchableOpacity onPress={() => setisReferal(true)}>
+                    <Text style={styles.enterCode}>Enter Code</Text>
+                  </TouchableOpacity>
+                </View>
+            }
+            <Text style={styles.terms}>
+              By clicking "Get Started", you agree to our{" "}
+              <Text style={styles.link}>Terms and Conditions</Text> &{" "}
+              <Text style={styles.link}>Privacy Policy</Text>
+            </Text>
+            <CommonButton title={'Get Started'} onPress={onSubmit} />
+          </View>
+          <View style={{ marginTop: "10%", alignItems: 'center' }}>
+            <Text style={styles.footer}>Version 1.0.0</Text>
+            <Text style={styles.footer}>© MyChamp11. All Rights Reserved</Text>
+          </View>
+        </ScrollView>
+      </LinearGradient>
     </AppSafeAreaView>
   )
 }
@@ -153,5 +167,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#bbb",
     textAlign: "center",
+  },
+  input: {
+    width: "100%",
+    // height: 50,
+    borderBottomWidth: 1,
+    borderBottomColor: "#bbb",
+    color: "#fff",
+    fontSize: 16,
+    marginBottom: 15,
   },
 })

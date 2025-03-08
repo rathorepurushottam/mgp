@@ -5,11 +5,12 @@ import ShopHeader from '../../common/shopHeader/ShopHeader'
 import FastImage from 'react-native-fast-image'
 import { shopIcon } from '../../helper/Image'
 import GoldCoinsCard from '../../common/goldCoinsCard/GoldCoinsCard'
+import { colors } from '../../theme/Colors'
 const width = Dimensions.get('window').width;
 
 const Shop = () => {
   return (
-     <LinearGradient colors={["#01025C", '#121269']} style={styles.container}>
+     <LinearGradient colors={[colors.BackgroundColorOne, colors.BackgroundColorTwo]} style={styles.container}>
       <ShopHeader title={'Shop Coin'}/>
       <ScrollView showsVerticalScrollIndicator={false} style={{marginBottom:'30%'}}>
       <View style={styles.ImageWrapper}>

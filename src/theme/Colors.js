@@ -8,5 +8,7 @@ export const colors = {
     Green :'#30D78E',
     bottomIConColor:'#FBD25E',
     bottomTabBackground:'#080828',
-    backgroundHeader :'#080828'
+    backgroundHeader :'#080828',
+    BackgroundColorOne :'#01025C',
+    BackgroundColorTwo :'#121269'
 }

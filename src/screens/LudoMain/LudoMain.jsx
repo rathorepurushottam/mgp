@@ -31,7 +31,7 @@ const LudoMain = () => {
         <Text style={{color:'#ccc'}}>Online Players <Text style={{fontWeight:'bold',color:'#fff'}}>11,555</Text></Text>
         </View>
       </ImageBackground>
-        <ScrollView contentContainerStyle={{flexGrow:1}}>
+        <ScrollView contentContainerStyle={{flexGrow:1}} showsVerticalScrollIndicator={false}>
       <ImageBackground source={ludobg} style={{height:"100%"}} resizeMode='repeat'>
         <FlatList
               data={InsideLudoData}
