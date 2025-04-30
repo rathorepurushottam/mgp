@@ -6,13 +6,14 @@ import {
   TouchableOpacity,
   Modal,
   StyleSheet,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { BlurView } from '@react-native-community/blur';
 import { checkUPIDlNumber, ifsclNumber, toastAlert } from '../../helper/Utility';
 
 const PaymentMethodModal = ({modalvisible,from,setModalVisible}) => {
-    console.log(from,"from")
+    // console.log(from,"from")
     const [formData, setFormData] = useState({
         holderName: '',
         accountNumber: '',
@@ -47,8 +48,8 @@ const PaymentMethodModal = ({modalvisible,from,setModalVisible}) => {
         }
         else{
             setModalVisible(false)
-            console.log(formData,"formData");
-            console.log(Upidetails,"upddetails")
+            // console.log(formData,"formData");
+            // console.log(Upidetails,"upddetails")
         }
         // setFormData('');
       }
@@ -61,7 +62,7 @@ const PaymentMethodModal = ({modalvisible,from,setModalVisible}) => {
       }else if(Upidetails?.CUpiId != Upidetails?.UpiID){
         toastAlert.showToastError('UPI ID does not match')
       }else{
-        console.log(Upidetails,'Upidetails')
+        // console.log(Upidetails,'Upidetails')
         setModalVisible(false);
       }
       }
@@ -75,6 +76,7 @@ const PaymentMethodModal = ({modalvisible,from,setModalVisible}) => {
         visible={modalvisible}
         // onRequestClose={onClose}
       >
+        <TouchableWithoutFeedback onPress={()=>setModalVisible(false)}>
         <View style={styles.centeredView}>
           <BlurView
             style={styles.absolute}
@@ -141,6 +143,7 @@ const PaymentMethodModal = ({modalvisible,from,setModalVisible}) => {
             </TouchableOpacity>
           </LinearGradient>
         </View>
+        </TouchableWithoutFeedback>
       </Modal>
         :
         <Modal
@@ -149,6 +152,8 @@ const PaymentMethodModal = ({modalvisible,from,setModalVisible}) => {
         visible={modalvisible}
         // onRequestClose={onClose}
       >
+        <TouchableWithoutFeedback onPress={()=>setModalVisible(false)}>
+
         <View style={styles.centeredView}>
           <BlurView
             style={styles.absolute}
@@ -203,6 +208,7 @@ const PaymentMethodModal = ({modalvisible,from,setModalVisible}) => {
             </TouchableOpacity>
           </LinearGradient>
         </View>
+        </TouchableWithoutFeedback>
       </Modal>
     
    

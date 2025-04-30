@@ -27,7 +27,7 @@ const GamesHome = ({NativeModules}) => {
             resizeMode="cover"
           />
           <View style={styles.labelContainer}>
-            <Text style={styles.label}>{item.Label}</Text>
+            <Text style={styles.label}>{item?.Label}</Text>
           </View>
         </TouchableOpacity>
       );
@@ -48,6 +48,7 @@ export default GamesHome;
 const styles = StyleSheet.create({
     container: {
       paddingHorizontal: 10,
+      marginBottom:'5%'
     },
     card: {
       width: '45%',

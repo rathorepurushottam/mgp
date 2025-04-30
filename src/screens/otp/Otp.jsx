@@ -1,32 +1,47 @@
-import { ScrollView, StyleSheet, Text, ToastAndroid, Touchable, TouchableOpacity, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import { colors } from '../../theme/Colors'
 import FastImage from 'react-native-fast-image'
 import { mychampLogo } from '../../helper/Image'
 import CommonButton from '../../common/CommonButton/CommonButton'
-import OTPInputView from '@twotalltotems/react-native-otp-input'
 import { useNavigation } from '@react-navigation/native'
 import { OtpInput } from 'react-native-otp-entry'
 import { toastAlert } from '../../helper/Utility'
+import { useDispatch } from 'react-redux'
+import { otpVerification, otpVerificationNew } from '../../actions/authActions'
 
 const Otp = ({ route }) => {
+  const dispatch = useDispatch();
+  console.log(route?.params,"toutessss")
+  const {data: Number, id, permissionSave} = route?.params ?? {};
   console.log(route?.params?.phone);
   const [code, setCode] = useState('')
   const navigation = useNavigation();
   const [error,setError] = useState('');
+
+
   const onSubmit = ()=>{
+    const verificationCode =  code;
     console.log(code,"Otp submitted")
-    if(!code || code.length != 6){
-      toastAlert.showToastError('Enter Valid OTP');
+    if(!code || code.length != 4){
+      toastAlert.showToastError('Enter Valide OTP');
       setError('Invalid OTP')
     }else{
       const data = {
-        otp : code,
-        phone : route?.params?.phone,
+        // mobile_number: Number?.mobile_number,
+        // otp: verificationCode,
+        phoneNumber : Number?.phoneNumber, 
+        isoCode : "IN",
+        deviceType : "Android",
+        otp : verificationCode,
+        ipAddress : "103.110.127.91:3000",
+        deviceId : "12"
       }
+      console.log(data,"data ub opt")
+      dispatch(otpVerificationNew(data));
       setError('');
-      navigation.navigate('VerifyOtp',{data:data})
+      // navigation.navigate('VerifyOtp',{data:data})
     }
   }
   return (
@@ -41,14 +56,14 @@ const Otp = ({ route }) => {
           <Text style={styles.subHeading}>
             Enter the OTP that you received on
           </Text>
-          <Text style={styles.subHeading}>+91 {route?.params?.phone}</Text>
+          <Text style={styles.subHeading}>+91 {route?.params?.data?.phoneNumber}</Text>
 
           <OtpInput
-            numberOfDigits={6}
+            numberOfDigits={4}
             focusColor={colors.Green}
             autoFocus={true}
             hideStick={true}
-            placeholder="******"
+            placeholder="****"
             blurOnFilled={true}
             disabled={false}
             type="numeric"
@@ -70,7 +85,7 @@ const Otp = ({ route }) => {
           />
           {
             error ? 
-            <Text style={{color:colors.ErrorColor,alignSelf:'center',marginBottom:'10%'}}>{error }</Text>
+            <Text style={{color:colors.ErrorColor,alignSelf:'center',marginBottom:'10%'}}>{error}</Text>
             : ''
           }
           <View style={{ marginBottom: '10%' }}>
@@ -84,7 +99,6 @@ const Otp = ({ route }) => {
               <TouchableOpacity onPress={()=>navigation.goBack()}><Text style={styles.resend}>Change</Text></TouchableOpacity>
             </View>
           </View>
-
           <CommonButton title={'Verify'} onPress= {onSubmit}/>
         </View>
 
@@ -94,7 +108,6 @@ const Otp = ({ route }) => {
         </View>
       </ScrollView>
     </LinearGradient>
-
   )
 }
 
@@ -192,6 +205,8 @@ const styles = StyleSheet.create({
   },
   pinCodeContainer: {
     borderWidth: 2,
+    height:60,
+    width:60
   },
   subHeading: {
     fontSize: 14,

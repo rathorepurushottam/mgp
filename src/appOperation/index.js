@@ -1,22 +1,29 @@
+// import {url} from './../services/appOptions';
+import admin from './lib/admin';
 import guest from './lib/guest';
 import customer from './lib/customer';
-// import { GUEST_TYPE, CUSTOMER_TYPE } from './types';
-import { BaseUrl } from '../helper/utility';
+import { ADMIN_TYPE, CUSTOMER_TYPE } from './types';
+import { BASE_URL, toastAlert } from '../helper/Utility';
 
 class ApiError extends Error {
   constructor(m) {
     super(m);
   }
 }
+
 export class AppOperation {
   base_url;
   root_path;
+  admin;
   guest;
   customer;
   customerToken;
   constructor() {
-    this.base_url = BaseUrl;
+    this.base_url = BASE_URL;
+    console.log(this.customerToken,"customertokennnnn")
+    // this.base_url = 'http://103.175.163.162:5003/';
     this.root_path = '';
+    this.admin = admin(this);
     this.guest = guest(this);
     this.customer = customer(this);
   }
@@ -27,23 +34,23 @@ export class AppOperation {
     }
   }
 
-  post(path, params, type = GUEST_TYPE) {
+  post(path, params, type = ADMIN_TYPE) {
     return this.send(path, 'POST', null, params, type);
   }
 
-  patch(path, params, type = GUEST_TYPE) {
+  patch(path, params, type = ADMIN_TYPE) {
     return this.send(path, 'PATCH', null, params, type);
   }
 
-  put(path, params, type = GUEST_TYPE) {
+  put(path, params, type = ADMIN_TYPE) {
     return this.send(path, 'PUT', null, params, type);
   }
 
-  get(path, params, data, type = GUEST_TYPE) {
+  get(path, params, data, type = ADMIN_TYPE) {
     return this.send(path, 'GET', params, data, type);
   }
 
-  delete(path, params, type = GUEST_TYPE) {
+  delete(path, params, type = ADMIN_TYPE) {
     return this.send(path, 'DELETE', params, null, type);
   }
 
@@ -73,75 +80,58 @@ export class AppOperation {
     if (this.customerToken && type === CUSTOMER_TYPE) {
       headers['Authorization'] = `${this.customerToken}`;
     }
+    else{
+      console.log(this.customerToken,CUSTOMER_TYPE,"customertokennn")
+    }
+
+    
 
     return new Promise((resolve, reject) => {
-      console.log({
-        uri,
-        method,
-        headers,
-        data,
-        ...params,
-      });
-
       let bodyData = null;
       if (data instanceof FormData) {
         bodyData = data;
         headers['Content-Type'] = 'multipart/form-data';
       } else {
         bodyData = JSON.stringify(data);
+        // console.log(bodyData);
       }
 
-
-    fetch(uri, { method, headers, body: bodyData })
-  .then(async (response) => {
-    // console.log(response, "response in appoperation");
-    const status = response.status;
-    const contentType = response.headers.get("content-type");
-    try {
-      const responseData = await response.text();
-
-      // Check if response is JSON before parsing
-      if (contentType && contentType.includes("application/json")) {
-        const jsonData = JSON.parse(responseData);
-
-        if (response.ok) {
-          resolve({ ...jsonData, code: status });
-        } else {
-          reject({ code: status, ...jsonData });
-        }
-      } else {
-        // Handle non-JSON responses (e.g., HTML error pages)
-        reject({
-          code: status,
-          data: responseData || "Unexpected non-JSON response",
+      fetch(uri, { method, headers, body: bodyData })
+        .then(response => {
+          console.log(response, "response");
+          let status = response.status;
+          if (response.ok) {
+            return response
+              .text()
+              .then(responseData => {
+                let jsonData = JSON.parse(responseData);
+                resolve({ ...jsonData, code: status });
+              })
+              .catch(errorResponse =>
+                Promise.reject({ code: status, data: errorResponse }),
+              );
+          }
+          // Possible 401 or other network error
+          return response
+            .text()
+            .then(errorResponse =>
+              Promise.reject({ code: status, data: errorResponse }),
+            );
+        })
+        .catch(error => {
+          console.log(error,"error in ")
+          const customError = this.getErrorMessageForResponse(error);
+          reject(new ApiError(customError));
+          // toastAlert.showToastError(error);
         });
-      }
-    } catch (parseError) {
-      console.error("Parsing Error:", parseError);
-
-      reject({
-        code: status,
-        data: "Error parsing response: "
-      });
-    }
-  })
-  .catch((error) => {
-    console.error("Network Error:", error);
-    const customError = this.getErrorMessageForResponse(error);
-    reject(new ApiError(customError));
-  });
-
-
-   });
+    });
   }
 
   getErrorMessageForResponse(data) {
-    // console.log("data:::::::::", data);
     let message = undefined;
     try {
       message = JSON.parse(data.data).message;
     } catch (e) {
-      console.log(e);
     }
 
     switch (data.code) {
@@ -415,6 +405,7 @@ export class AppOperation {
   }
 
   setCustomerToken(token) {
+    // console.log(token,"tokeennn111111")
     this.customerToken = token;
   }
 }

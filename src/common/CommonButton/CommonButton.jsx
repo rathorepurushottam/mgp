@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient'
 
 const CommonButton = ({title,onPress}) => {
   return (
-    <TouchableOpacity style={{width: "100%"}} onPress={onPress}>
+    <TouchableOpacity activeOpacity={0.7} style={{width: "100%"}} onPress={onPress}>
     <LinearGradient colors={["#FCD35E",'#EFAB3D']} style={styles.button} >
         <Text style={styles.buttonText}>{title}</Text>
     </LinearGradient>

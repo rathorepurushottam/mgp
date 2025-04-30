@@ -34,7 +34,7 @@ const Slider = () => {
     <TouchableOpacity activeOpacity={0.8} style={{ width: width - 40, marginHorizontal: 20, borderRadius: 10, overflow: 'hidden' }}>
       <FastImage
         source={item.image}
-        style={{ width: '100%', height: 150, borderRadius: 10 }}
+        style={{ width: '100%', height: 120, borderRadius: 10 }}
         resizeMode='stretch'
       />
     </TouchableOpacity>

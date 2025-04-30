@@ -15,7 +15,7 @@ const Wallet = () => {
   return (
      <LinearGradient colors={[colors.BackgroundColorOne, colors.BackgroundColorTwo]} style={styles.container}>
       <WalletHeader title="WALLET"/>
-      <ScrollView style={{marginBottom:"30%"}} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{marginBottom:"18%"}} showsVerticalScrollIndicator={false}>
         <View style={styles.balanceCard}>
           <View style={styles.BalanceWrap}>
             <View>
@@ -107,7 +107,7 @@ const Wallet = () => {
             </View>
           </TouchableOpacity>
           </View>
-        <View style={styles.section}>
+        <View style={[styles.section,{marginBottom:"10%"}]}>
           <TouchableOpacity style={styles.sectionItem}>
             <View style={{flexDirection:'row',alignItems:'center'}}>
             {/* <Icon name="file-document" size={24} color="#fff" /> */}
