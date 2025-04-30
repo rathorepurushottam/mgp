@@ -324,3 +324,63 @@ export const rulesData = [
     playersCount: 8,
   },
 ];
+
+export const ContestData = [
+  {
+    id:1,
+    Prize:'10000',
+    EntryFee :'50',
+    OnlinePlayer:12,
+    player:2,
+    winning:1,
+  },
+  {
+    id:2,
+    Prize:'20000',
+    EntryFee :'110',
+    OnlinePlayer:121,
+    player:22,
+    winning:1,
+  },
+  {
+    id:3,
+    Prize:'1000',
+    EntryFee :'500',
+    OnlinePlayer:10,
+    player:10,
+    winning:3,
+  },
+  {
+    id:4,
+    Prize:'10000',
+    EntryFee :'50',
+    OnlinePlayer:12,
+    player:2,
+    winning:1,
+  },
+  {
+    id:5,
+    Prize:'10000',
+    EntryFee :'50',
+    OnlinePlayer:12,
+    player:2,
+    winning:1,
+  },
+  {
+    id:6,
+    Prize:'10000',
+    EntryFee :'50',
+    OnlinePlayer:12,
+    player:2,
+    winning:1,
+  },
+  {
+    id:7,
+    Prize:'10000',
+    EntryFee :'50',
+    OnlinePlayer:12,
+    player:2,
+    winning:1,
+  },
+
+];

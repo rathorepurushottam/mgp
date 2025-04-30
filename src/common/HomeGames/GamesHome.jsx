@@ -1,14 +1,26 @@
-import { Dimensions, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import { Dimensions, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
 import { GameData } from '../../../assets/DummyData/DummyData';
 import FastImage from 'react-native-fast-image';
 import { useNavigation } from '@react-navigation/native';
 const { width } = Dimensions.get('window');
 
-const GamesHome = () => {
-    const navigation = useNavigation()
+
+
+const GamesHome = ({NativeModules}) => {
+    const navigation = useNavigation();
+
+    const handleNavigation = (item) => {
+      navigation.navigate('LudoMain');
+    };
+
+    const openUnity = () => {
+      NativeModules.UnityModule.startUnity();
+      NativeModules.UnitySender.sendMessageToUnity('Hello Unity!');
+    };
+
     const renderItem = ({ item }) => (
-        <TouchableOpacity activeOpacity={0.8} style={styles.card} onPress={()=>navigation.navigate(item?.navigate)}>
+        <TouchableOpacity activeOpacity={0.8} style={styles.card} onPress={handleNavigation}>
           <FastImage
             source={item.image}
             style={styles.image}
@@ -29,9 +41,9 @@ const GamesHome = () => {
       showsVerticalScrollIndicator={false}
     />
   );
-}
+};
 
-export default GamesHome
+export default GamesHome;
 
 const styles = StyleSheet.create({
     container: {
@@ -51,7 +63,7 @@ const styles = StyleSheet.create({
     // shadowOpacity: 0.7,
     // shadowRadius: 15,
     // elevation: 15,
-      
+
     },
     image: {
       width: '100%',
@@ -69,6 +81,5 @@ const styles = StyleSheet.create({
     label: {
       color: '#fff',
       fontWeight: 'bold',
-    }
+    },
   });
-  

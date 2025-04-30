@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View , NativeModules} from 'react-native'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import HomeTopHeader from '../../common/HomeHeader/HomeTopHeader'
@@ -7,6 +7,8 @@ import FastImage from 'react-native-fast-image'
 import { trophy } from '../../helper/Image'
 import GamesHome from '../../common/HomeGames/GamesHome'
 import { colors } from '../../theme/Colors'
+
+const {UnityModule} = NativeModules;
 
 const Home = () => {
   return (
@@ -18,7 +20,7 @@ const Home = () => {
           <FastImage source={trophy} style={styles.trophy}/>
           <Text style={styles.text}>XYZ won 84 Rs, you can be next XYZ...Play Now!</Text>
         </View>
-        <GamesHome/>
+        <GamesHome NativeModules={NativeModules}/>
         </ScrollView>
        </LinearGradient>
   )

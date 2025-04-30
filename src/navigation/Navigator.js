@@ -26,6 +26,7 @@ import InviteFriend from '../screens/InviteFriend/InviteFriend';
 import Settings from '../screens/settings/Settings';
 import KycScreen from '../screens/kycScreen/KycScreen';
 import VerifyAdhar from '../screens/VerifyAdhar/VerifyAdhar';
+import LudoContests from '../screens/LudoContests';
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -39,6 +40,7 @@ const RootStackScreen = () => {
       <Stack.Screen name="LudoMain" component={LudoMain}/>
       <Stack.Screen name="EditProfile" component={EditProfile}/>
       <Stack.Screen name="LudoHistory" component={LudoHistory}/>
+      <Stack.Screen name="LudoContests" component={LudoContests}/>
       <Stack.Screen name="RummyHistory" component={RummyHistory}/>
       <Stack.Screen name="InviteFriend" component={InviteFriend}/>
       <Stack.Screen name="Settings" component={Settings}/>

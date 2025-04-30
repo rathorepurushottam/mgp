@@ -26,7 +26,7 @@ const Login = () => {
       setError('Please enter Mobile Number')
     }else if(!validateMobile(mobileNumber)){
       toastAlert.showToastError('InValid Number');
-      setError('InValid Number')
+      setError('InValid Number');
     }
     else {
       setError('');

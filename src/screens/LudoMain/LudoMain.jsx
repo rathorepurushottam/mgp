@@ -7,10 +7,12 @@ import FastImage from 'react-native-fast-image'
 import LinearGradient from 'react-native-linear-gradient'
 import { InsideLudoData } from '../../../assets/DummyData/DummyData'
 import RulesModal from '../../common/RulesModal/RulesModal'
+import { useNavigation } from '@react-navigation/native'
 const width = Dimensions.get('window').width;
 const LudoMain = () => {
+  const navigation = useNavigation();
   const renderItem = ({ item }) => (
-    <TouchableOpacity activeOpacity={0.8} >
+    <TouchableOpacity activeOpacity={0.8} onPress={() =>   navigation.navigate('LudoContests')}>
       <FastImage
         source={item.image}
         style={styles.image}
