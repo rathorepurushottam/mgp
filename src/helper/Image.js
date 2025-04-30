@@ -71,4 +71,96 @@ export const soundIcon = require('../../assets/images/soundIcon.png')
 export const HelpIcon = require('../../assets/images/HelpIcon.png')
 export const PanIcon = require('../../assets/images/PanIcon.png')
 
+export const MyChampScreen1 = require('../../assets/images/MyChampScreen1.png');
 
+
+export const wicket_keeperIcon = require('../../assets/images/wicket_keeper.png');
+export const subtwo = require('../../assets/images/subtwo.png');
+export const subthree = require('../../assets/images/subthree.png');
+export const subone = require('../../assets/images/subone.png');
+export const subminus = require('../../assets/images/subminus.png');
+export const subfour = require('../../assets/images/subfour.png');
+export const rightArrow = require('../../assets/images/rightArrow.png');
+export const bowlerIcon = require('../../assets/images/bowler.png');
+export const batsmanIcon = require('../../assets/images/batsman.png');
+export const all_rounderIcon = require('../../assets/images/all_rounder.png');
+export const addsubstitues = require('../../assets/images/addSubsitude.png');
+export const FILTER_ICON = require('../../assets/images/filterIcon.png');
+export const backIconMain = require('../../assets/images/backIconMain.png');
+export const iconbell = require('../../assets/images/iconbell.png');
+export const VS = require('../../assets/images/VS.png');
+export const joinMatch = require('../../assets/images/joinMatch.png');
+export const MATCH_REMAINDER_CLOSE_ICON = require('../../assets/images/closeIconRemainder.png');
+export const dropDownRed = require('../../assets/images/dropDownRed.png');
+export const downArrow = require('../../assets/images/downArrow.png');
+export const Alertlogo = require('../../assets/images/Alertlogo.png');
+
+export const m = require('../../assets/images/m.png');
+export const WINNER = require('../../assets/images/winner.png');
+export const SINGLE = require('../../assets/images/single.png');
+export const GURANTEE = require('../../assets/images/gurantee.png');
+export const GLORY = require('../../assets/images/glory.png');
+export const arrow = require('../../assets/images/arrow.png');
+export const PENCIL = require('../../assets/images/pencil.png');
+export const CLOSE_WHITE_ICON = require('../../assets/images/closeWhite.png');
+export const headerIner = require('../../assets/images/headerIner.png');
+export const StopIcon = require('../../assets/images/StopIcon.png');
+export const RED_MINUS = require('../../assets/images/redMinus.png');
+export const GREEN_PLUS_ICON = require('../../assets/images/greenPlusIcon.png');
+export const GLOVE = require('../../assets/images/glove.png');
+export const BOWL = require('../../assets/images/bowl.png');
+export const BAT = require('../../assets/images/bat.png');
+
+export const shapeParallelogram = require('../../assets/images/shapeParallelogram.png');
+export const ProfileBackgroundImageTwo = require('../../assets/images/profilebgTwo.png');
+export const closeIcon = require('../../assets/images/closeIcon.png');
+export const tick = require('../../assets/images/tick.png');
+export const CurrentStar = require('../../assets/images/CurrentStar.png');
+export const Layer_1 = require('../../assets/images/Layer_1.png');
+export const GRASS = require('../../assets/images/grass.png');
+export const myChampTextImg = require('../../assets/images/myChampTextImg.png')
+export const arrowleft = require('../../assets/images/arrowleft.png')
+export const bgludo = require('../../assets/images/bgludo.png')
+
+
+export const LUDO = require('../../assets/images/LUDO.png')
+export const people = require('../../assets/images/people.png')
+
+export const exclaim = require('../../assets/images/exclaim.png')
+
+
+export const CAPTAIN = require('../../assets/images/captain.png');
+export const green_ground = require('../../assets/images/ground_green.png');
+export const player_placeholder = require('../../assets/images/player_placeholder.png');
+export const smallBackgrounBlur = require('../../assets/images/smallBackgrounBlur.png');
+
+export const subsituteAdd = require('../../assets/images/subsituteAdd.png');
+// export const subsituteAddRed = require('../../assets/images/subsituteAddRed.png');
+export const substituteIcon = require('../../assets/images/substitute.png');
+export const VICE_CAPTAIN = require('../../assets/images/viceCaptain.png');
+
+export const SHARE = require('../../assets/images/share.png');
+export const LEFT_ARROW = require('../../assets/images/leftArrow.png');
+export const blurBackground = require('../../assets/images/blurBackground.png');
+export const copy = require('../../assets/images/copy.png');
+export const COPY = require('../../assets/images/clipboard.png');
+export const greenmark = require('../../assets/images/greenmark.png');
+export const HomeFantasy = require('../../assets/images/home.png');
+export const ContestFantasy = require('../../assets/images/trophybottom.png');
+
+export const homeFantasy = require('../../assets/images/homeFantasy.png');
+export const rakingBottomIcon = require('../../assets/images/rakingBottomIcon.png');
+export const home1 = require('../../assets/images/home1.png');
+
+
+export const wallet = require('../../assets/images/wallet.png');
+export const profile = require('../../assets/images/profile.png');
+export const ranking = require('../../assets/images/ranking.png');
+export const shops = require('../../assets/images/shops.png');
+
+
+
+
+
+// homeFantasy
+// rakingBottomIcon

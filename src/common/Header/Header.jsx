@@ -4,7 +4,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import { colors } from '../../theme/Colors'
 import { useNavigation } from '@react-navigation/native'
 import RulesModal from '../RulesModal/RulesModal'
-const Header = () => {
+const Header = ({from,title}) => {
     const navigation = useNavigation();
     const [modalVsible,setModalVisible] = useState(false);
   return (
@@ -13,7 +13,16 @@ const Header = () => {
       <TouchableOpacity style={styles.arrowWrapper} onPress={()=>navigation.goBack()}>
         <AntDesign name="arrowleft" color={'#fff'} size={20}/>
       </TouchableOpacity>
-      <View style={styles.Rules}>
+
+      {/* {
+        from == "Notification" ? 
+        <Text style={{color:"#fff"}}>{title}</Text>
+        :null
+      } */}
+
+      {
+        from !== 'Notification' ? 
+        <View style={styles.Rules}>
         <View>
         <Text style={{color:'#fff',marginRight:8}}>Rules</Text>
         </View>
@@ -21,6 +30,9 @@ const Header = () => {
         <AntDesign name="question" color={'#222'} size={20}/>
         </TouchableOpacity>
       </View>
+      :<></>
+      }
+      
     </View>
       <RulesModal modalVsible={modalVsible} setModalVisible={setModalVisible}/>
     </>

@@ -12,7 +12,7 @@ const Shop = () => {
   return (
      <LinearGradient colors={[colors.BackgroundColorOne, colors.BackgroundColorTwo]} style={styles.container}>
       <ShopHeader title={'Shop Coin'}/>
-      <ScrollView showsVerticalScrollIndicator={false} style={{marginBottom:'30%'}}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{marginBottom:'18%'}}>
       <View style={styles.ImageWrapper}>
         <FastImage source={shopIcon} style={styles.shopIcon} resizeMode='contain'/>
         <View style={{marginTop:'-20%',marginLeft:'20%'}}>

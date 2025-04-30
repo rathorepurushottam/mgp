@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import HomeTopHeader from '../../common/HomeHeader/HomeTopHeader'
 import Slider from '../../common/SliderHome/Slider'
@@ -7,12 +7,25 @@ import FastImage from 'react-native-fast-image'
 import { trophy } from '../../helper/Image'
 import GamesHome from '../../common/HomeGames/GamesHome'
 import { colors } from '../../theme/Colors'
+import { useDispatch, useSelector } from 'react-redux'
+import { getKycDetails } from '../../actions/profileAction'
+import { AppSafeAreaView } from '../../common/AppSafeAreaView/AppSafeAreaView'
 
 const Home = () => {
+  const diapatch = useDispatch();
+   const kycDetails = useSelector(state => {
+    return state.profile.kycDetails;
+  });
+
+  console.log(kycDetails,"kycdetails")
+  useEffect(()=>{
+    diapatch(getKycDetails());
+  },[])
   return (
+        <AppSafeAreaView light={true}>
        <LinearGradient colors={[colors.BackgroundColorOne,colors.BackgroundColorTwo]} style={styles.container}>
         <HomeTopHeader/>
-        <ScrollView showsVerticalScrollIndicator={false} style={{marginBottom:'30%'}}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{marginBottom:'18%'}}>
         <Slider/>
         <View style={styles.trophyWrapper}>
           <FastImage source={trophy} style={styles.trophy}/>
@@ -21,6 +34,7 @@ const Home = () => {
         <GamesHome/>
         </ScrollView>
        </LinearGradient>
+       </AppSafeAreaView>
   )
 }
 

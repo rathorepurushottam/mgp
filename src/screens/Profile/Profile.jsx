@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
   },
   ScrollContainer:{ 
     paddingTop: 20,
-     marginBottom: "30%", 
+     marginBottom: "18%", 
      width: "90%", 
      marginHorizontal: 20 
   },

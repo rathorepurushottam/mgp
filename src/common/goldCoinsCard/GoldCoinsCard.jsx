@@ -50,6 +50,7 @@ export default GoldCoinsCard
       width:'100%',
       // marginBottom:'30%',
       // padding: 10,
+      marginBottom:"10%"
     },
     card: {
       backgroundColor: '#fff',
@@ -61,6 +62,7 @@ export default GoldCoinsCard
       marginVertical: 10,
       elevation: 5,
       position: 'relative',
+      
     },
     image: {
       width: 50,

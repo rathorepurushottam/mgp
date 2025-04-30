@@ -69,7 +69,7 @@ const RankingCard = ({ item }) => (
 );
 
 const RankingList = () => (
-  <ScrollView showsVerticalScrollIndicator={false}>
+  <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom:'10%'}}>
     <ImageBackground source={Winnersbg} style={styles.logoMain}>
       <FastImage source={Winners} style={styles.logo} resizeMode='contain' />
     </ImageBackground>
@@ -146,7 +146,7 @@ export default Ranking
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingBottom: '32%'
+    paddingBottom: '18%'
   },
   header: {
     fontSize: 24,

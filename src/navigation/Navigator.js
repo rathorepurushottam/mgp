@@ -13,7 +13,7 @@ import Shop from '../screens/Shops/Shop';
 import Wallet from '../screens/Wallet/Wallet';
 import Profile from '../screens/Profile/Profile';
 import { colors } from '../theme/Colors';
-import { BottomHomeIcon, BottomProfileIcon, BottomRankIcon, BottomShopIcon, BottomWalletIcon, setting } from '../helper/Image';
+import { BottomHomeIcon, BottomProfileIcon, BottomRankIcon, BottomShopIcon, BottomWalletIcon, ContestFantasy, home1, homeFantasy, HomeFantasy, profile, rakingBottomIcon, ranking, setting, shops, wallet } from '../helper/Image';
 import { Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import LudoMain from '../screens/LudoMain/LudoMain';
@@ -26,6 +26,20 @@ import InviteFriend from '../screens/InviteFriend/InviteFriend';
 import Settings from '../screens/settings/Settings';
 import KycScreen from '../screens/kycScreen/KycScreen';
 import VerifyAdhar from '../screens/VerifyAdhar/VerifyAdhar';
+import FantasyHome from '../screens/fantasy/FantasyHome/FantasyHome';
+import Cricket from '../screens/fantasy/Cricket/Cricket';
+import MatchCard from '../screens/fantasy/matchCard/MatchCard';
+import MyContest from '../screens/fantasy/myContest/MyContest';
+import { BOTTOM_TAB_CONTEST_SCREEN, LEADERBOARD, MY_CONTEST, Notification__SCREEN, PLAYER_PREVIEW, PLAYER_PREVIEW_TWO, SELECT_CAPTAIN, SELECT_PLAYER } from './routes';
+import SelectPlayer from '../screens/fantasy/selectPlayer/SelectPlayer';
+import LeaderBoard from '../screens/leaderboard/LeaderBoard';
+import Contests from '../screens/Contests/Contests';
+import PlayerPreview from '../screens/playerPreview/PlayerPreview';
+import SelectCaptain from '../screens/fantasy/selectCaptain/SelectCaptain';
+import PlayerPreviewTwo from '../screens/fantasy/playerPreviewTwo/PlayerPreviewTwo';
+import MyMatches from '../screens/fantasy/contests/myMatches/MyMatches';
+import SelectTeam from '../common/components/matchCard/selectTeam/SelectTeam';
+import Notification from '../screens/fantasy/notification/Notification';
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -36,6 +50,7 @@ const RootStackScreen = () => {
       screenOptions={{ headerShown: false }}>
       <Stack.Screen name="AUTHLoading" component={AuthLoading} />
       <Stack.Screen name="AUTHStack" component={AuthStack} />
+      <Stack.Screen name = {'BottomNavigation'} component={BottomNavigation}/>
       <Stack.Screen name="LudoMain" component={LudoMain}/>
       <Stack.Screen name="EditProfile" component={EditProfile}/>
       <Stack.Screen name="LudoHistory" component={LudoHistory}/>
@@ -44,6 +59,20 @@ const RootStackScreen = () => {
       <Stack.Screen name="Settings" component={Settings}/>
       <Stack.Screen name="KycScreen" component={KycScreen}/>
       <Stack.Screen name="VerifyAdhar" component={VerifyAdhar}/>
+      <Stack.Screen name="BottomNavFantasy" component={BottomNavFantasy}/>
+      <Stack.Screen name="Cricket" component={Cricket}/>
+      <Stack.Screen name="MatchCard" component={MatchCard}/>
+      <Stack.Screen name={MY_CONTEST} component={MyContest}/>
+      <Stack.Screen name={SELECT_PLAYER} component={SelectPlayer}/>
+      <Stack.Screen name={LEADERBOARD} component={LeaderBoard}/>
+
+      <Stack.Screen name={"Contests"} component={Contests}/>
+      <Stack.Screen name={PLAYER_PREVIEW} component={PlayerPreview}/>
+      <Stack.Screen name={SELECT_CAPTAIN} component={SelectCaptain}/>
+      <Stack.Screen name={PLAYER_PREVIEW_TWO} component={PlayerPreviewTwo}/>
+
+      <Stack.Screen name={'SelectTeam'} component={SelectTeam}/>
+      <Stack.Screen name={Notification__SCREEN} component={Notification} />
     </Stack.Navigator>
   );
 };
@@ -83,6 +112,7 @@ const BottomNavigation = ()=>{
         marginBottom: 8,
         elevation: 0,
         zIndex: 1, 
+        paddingHorizontal:10
       },
       tabBarAllowFontScaling: false,
       tabBarShowLabel: false,
@@ -92,34 +122,29 @@ const BottomNavigation = ()=>{
         tabBarIcon: ({focused}) => (
           <>
             {focused ? (
-              <View 
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginTop: -30,
-                }}>
-                <View 
-                  style={{
-                    width: 70,
-                    height: 70,
-                    borderRadius: 35,
-                    borderWidth:6,
-                    borderColor:'#121269',
-                    backgroundColor: '#0b0c2a', // Background color for the circle
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                  <FastImage
-                    resizeMode="contain"
-                    style={{width: 35, height: 35}}
-                    source={BottomRankIcon}
-                  />
-                </View>
-                <View style={{height:7,width:7,borderRadius:5,backgroundColor:'#FBD25E',marginTop:9}}></View>
-                <Text style={{color: '#f2c94c', fontSize: 9, marginTop: 5}}>
-                  Ranking
-                </Text>
-              </View>
+              <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: -10,
+                // width:70
+              }}>
+                <FastImage
+                  resizeMode="stretch"
+                  style={{ 
+                    width: 60,
+                    height: 60,
+                    // borderRadius: 35, 
+                  }}
+                  source={ranking}
+                />
+           <View style={{height:7,width:7,borderRadius:5,backgroundColor:'#FBD25E',marginTop:5}}></View>
+                
+       
+              <Text style={{ color: '#FBD25E', fontSize: 11,fontWeight:"500", }}>
+                Rank
+              </Text>
+            </View>
             ) : (
               <View style={{alignItems: 'center',marginTop:20}}>
                 <FastImage
@@ -132,7 +157,7 @@ const BottomNavigation = ()=>{
                   resizeMode="contain"
                 />
                 <Text style={{color: '#f2c94c', fontSize: 9}}>
-                  Ranking
+                  Rank
                 </Text>
               </View>
             )}
@@ -146,34 +171,27 @@ const BottomNavigation = ()=>{
         tabBarIcon: ({focused}) => (
           <>
             {focused ? (
-              <View 
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginTop: -30,
-                }}>
-                <View 
-                  style={{
-                    width: 70,
-                    height: 70,
-                    borderRadius: 35,
-                    borderWidth:6,
-                    borderColor:'#121269',
-                    backgroundColor: '#0b0c2a', // Background color for the circle
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                  <FastImage
-                    resizeMode="contain"
-                    style={{width: 35, height: 35}}
-                    source={BottomShopIcon}
-                  />
-                </View>
-                <View style={{height:7,width:7,borderRadius:5,backgroundColor:'#FBD25E',marginTop:9}}></View>
-                <Text style={{color: '#f2c94c', fontSize: 10, marginTop: 5}}>
-                  Shop
-                </Text>
-              </View>
+              <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: -13,
+              }}>
+                <FastImage
+                  resizeMode="stretch"
+                  style={{ width: 60,
+                    height: 60,
+                    // borderRadius: 35, 
+                  }}
+                  source={shops}
+                />
+           <View style={{height:7,width:7,borderRadius:5,backgroundColor:'#FBD25E',marginTop:5}}></View>
+                
+       
+              <Text style={{ color: '#FBD25E', fontSize: 11,fontWeight:"500", }}>
+                Shop
+              </Text>
+            </View>
             ) : (
               <View style={{alignItems: 'center',marginTop:20}}>
                 <FastImage
@@ -202,34 +220,27 @@ const BottomNavigation = ()=>{
         tabBarIcon: ({focused}) => (
           <>
             {focused ? (
-              <View 
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginTop: -30,
-                }}>
-                <View 
-                  style={{
-                    width: 70,
-                    height: 70,
-                    borderRadius: 35,
-                    borderWidth:6,
-                    borderColor:'#121269',
-                    backgroundColor: '#0b0c2a', // Background color for the circle
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                  <FastImage
-                    resizeMode="contain"
-                    style={{width: 35, height: 35}}
-                    source={BottomHomeIcon}
-                  />
-                </View>
-                <View style={{height:7,width:7,borderRadius:5,backgroundColor:'#FBD25E',marginTop:9}}></View>
-                <Text style={{color: '#f2c94c', fontSize: 10, marginTop: 5}}>
-                  Home
-                </Text>
-              </View>
+              <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: -13,
+              }}>
+                <FastImage
+                  resizeMode="stretch"
+                  style={{ width: 60,
+                    height: 60,
+                    // borderRadius: 35,
+                   }}
+                  source={home1}
+                />
+           <View style={{height:7,width:7,borderRadius:5,backgroundColor:'#FBD25E',marginTop:5}}></View>
+                
+       
+              <Text style={{ color: '#FBD25E', fontSize: 11,fontWeight:"500", }}>
+                Home
+              </Text>
+            </View>
             ) : (
               <View style={{alignItems: 'center',marginTop:20}}>
                 <FastImage
@@ -256,34 +267,27 @@ const BottomNavigation = ()=>{
         tabBarIcon: ({focused}) => (
           <>
             {focused ? (
-              <View 
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginTop: -30,
-                }}>
-                <View 
-                  style={{
-                    width: 70,
-                    height: 70,
-                    borderRadius: 35,
-                    borderWidth:6,
-                    borderColor:'#121269',
-                    backgroundColor: '#0b0c2a', // Background color for the circle
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                  <FastImage
-                    resizeMode="contain"
-                    style={{width: 35, height: 35}}
-                    source={BottomWalletIcon}
-                  />
-                </View>
-                <View style={{height:7,width:7,borderRadius:5,backgroundColor:'#FBD25E',marginTop:9}}></View>
-                <Text style={{color: '#f2c94c', fontSize: 10, marginTop: 5}}>
-                  Wallet
-                </Text>
-              </View>
+              <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: -13,
+              }}>
+                <FastImage
+                  resizeMode="stretch"
+                  style={{ width: 60,
+                    height: 60,
+                    // borderRadius: 35,
+                   }}
+                  source={wallet}
+                />
+           <View style={{height:7,width:7,borderRadius:5,backgroundColor:'#FBD25E',marginTop:5}}></View>
+                
+       
+              <Text style={{ color: '#FBD25E', fontSize: 11,fontWeight:"500", }}>
+                Wallet
+              </Text>
+            </View>
             ) : (
               <View style={{alignItems: 'center',marginTop:20}}>
                 <FastImage
@@ -310,34 +314,28 @@ const BottomNavigation = ()=>{
         tabBarIcon: ({focused}) => (
           <>
             {focused ? (
-              <View 
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginTop: -30,
-                }}>
-                <View 
-                  style={{
-                    width: 70,
-                    height: 70,
-                    borderRadius: 35,
-                    borderWidth:6,
-                    borderColor:'#121269',
-                    backgroundColor: '#0b0c2a', // Background color for the circle
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                  <FastImage
-                    resizeMode="contain"
-                    style={{width: 35, height: 35}}
-                    source={BottomProfileIcon}
-                  />
-                </View>
-                <View style={{height:7,width:7,borderRadius:5,backgroundColor:'#FBD25E',marginTop:9}}></View>
-                <Text style={{color: '#f2c94c', fontSize: 10, marginTop: 5}}>
-                  Profile
-                </Text>
-              </View>
+              <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: -10,
+                width:100
+              }}>
+                <FastImage
+                  resizeMode="stretch"
+                  style={{ width: 60,
+                    height: 60,
+                    // borderRadius: 35, 
+                  }}
+                  source={profile}
+                />
+           <View style={{height:7,width:7,borderRadius:5,backgroundColor:'#FBD25E',marginTop:5}}></View>
+                
+       
+              <Text style={{ color: '#FBD25E', fontSize: 11,fontWeight:"500", }}>
+                Profile
+              </Text>
+            </View>
             ) : (
               <View style={{alignItems: 'center',marginTop:20}}>
                 <FastImage
@@ -363,6 +361,161 @@ const BottomNavigation = ()=>{
   )
 }
 
+
+
+const BottomNavFantasy = ()=>{
+  return(
+    <BottomTab.Navigator initialRouteName='FantasyHome'
+    screenOptions={{
+      headerShown: false,
+      tabBarHideOnKeyboard: true,
+      tabBarStyle: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: '#080828', 
+        height: Platform.OS === 'ios' ? 80 : 60,
+        borderTopWidth: 0,
+        paddingVertical: 10,
+        borderRadius: 20,
+        marginHorizontal: 8,
+        marginBottom: 8,
+        elevation: 0,
+        zIndex: 1, 
+        // paddingHorizontal:10
+      },
+      tabBarAllowFontScaling: false,
+      tabBarShowLabel: false,
+    }}
+    >
+   
+     <BottomTab.Screen
+      options={{
+        tabBarIcon: ({focused}) => (
+          <>
+           {focused ? (
+              // <View 
+              //   style={{
+              //     alignItems: 'center',
+              //     justifyContent: 'center',
+              //     marginTop: -30,
+              //   }}>
+              //   <View 
+              //     style={{
+              //       width: 70,
+              //       height: 70,
+              //       borderRadius: 35,
+              //       borderWidth:6,
+              //       borderColor:'#121269',
+              //       backgroundColor: '#0b0c2a', // Background color for the circle
+              //       alignItems: 'center',
+              //       justifyContent: 'center',
+              //     }}>
+              //     <FastImage
+              //       resizeMode="contain"
+              //       style={{width: 35, height: 35}}
+              //       source={HomeFantasy}
+              //     />
+              //   </View>
+              //   <View style={{height:7,width:7,borderRadius:5,backgroundColor:'#FBD25E',marginTop:9}}></View>
+              //   <Text style={{color: '#f2c94c', fontSize: 10, marginTop: 5}}>
+              //     Home
+              //   </Text>
+              // </View>
+
+              <View
+                  style={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginTop: -13,
+                  }}>
+                    <FastImage
+                      resizeMode="stretch"
+                      style={{ width: 60,
+                        height: 60,
+                        borderRadius: 35, }}
+                      source={HomeFantasy}
+                    />
+               <View style={{height:7,width:7,borderRadius:5,backgroundColor:'#fff',marginTop:5}}></View>
+                    
+           
+                  <Text style={{ color: '#fff', fontSize: 11,fontWeight:"500", }}>
+                    Home
+                  </Text>
+                </View>
+            )  : (
+              <View style={{alignItems: 'center',marginTop:20}}>
+                <FastImage
+                  source={homeFantasy}
+                  style={{
+                    width: 35,
+                    height: 25,
+                    tintColor: '#fff', 
+                  }}
+                  resizeMode="contain"
+                />
+                <Text style={{color: '#fff', fontSize: 10,marginTop:4}}>
+                  Home
+                </Text>
+              </View>
+            )}
+          </>
+        ),
+      }}
+      
+       name="FantasyHome" component={FantasyHome}/>
+         
+    <BottomTab.Screen
+      options={{
+        tabBarIcon: ({focused}) => (
+          <>
+            {focused ? (
+                 <View
+                 style={{
+                   alignItems: 'center',
+                   justifyContent: 'center',
+                   marginTop: -13,
+                   width:100
+                 }}>
+                   <FastImage
+                     resizeMode="stretch"
+                     style={{ width: 60,
+                       height: 60,
+                       borderRadius: 35, }}
+                     source={ContestFantasy}
+                   />
+              <View style={{height:7,width:7,borderRadius:5,backgroundColor:'#fff',marginTop:5}}></View>
+                   
+          
+                 <Text style={{ color: '#fff', fontSize: 11,fontWeight:"500", }}>
+                   Contest
+                 </Text>
+               </View>
+            ) : (
+              <View style={{alignItems: 'center',marginTop:20,width:100}}>
+                <FastImage
+                  source={rakingBottomIcon}
+                  style={{
+                    width: 35,
+                    height: 25,
+                    tintColor: '#f2c94c', 
+                  }}
+                  resizeMode="contain"
+                />
+                <Text style={{color: '#fff', fontSize: 10,marginTop:4}}>
+                  Contest
+                </Text>
+              </View>
+            )}
+          </>
+        ),
+      }}
+      
+       name={BOTTOM_TAB_CONTEST_SCREEN} component={MyMatches}/>
+    </BottomTab.Navigator>
+  )
+}
 const HomeStack = ()=>{
   return(
     <Stack.Navigator
@@ -448,7 +601,11 @@ const ProfileStack = ()=>{
 
 const Navigator = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer 
+    ref={navigatorRef => {
+      NavigationService.setTopLevelNavigator(navigatorRef);
+    }}
+    >
       <RootStackScreen />
     </NavigationContainer>
   );

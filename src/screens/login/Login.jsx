@@ -5,20 +5,25 @@ import FastImage from 'react-native-fast-image'
 import { mychampLogo } from '../../helper/Image'
 import LinearGradient from 'react-native-linear-gradient'
 import CommonButton from '../../common/CommonButton/CommonButton'
-import NavigationService from '../../navigation/NavigationService'
 import { useNavigation } from '@react-navigation/native'
 import { toastAlert, validateMobile } from '../../helper/Utility'
 import InputBox from '../../common/InputBox/InputBox'
 import { AppSafeAreaView } from '../../common/AppSafeAreaView/AppSafeAreaView'
-import TextInputBox from '../../common/textInputBox/TextInputBox'
+import { useDispatch, useSelector } from 'react-redux'
+import { userSignup, userSignupNew } from '../../actions/authActions'
+import { SpinnerSecond } from '../../common/SpinnerSecond'
 const Screen = Dimensions.get('window');
 
 const Login = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const [mobileNumber, setMobileNumber] = useState("");
   const [error, setError] = useState('');
   const [isReferal, setisReferal] = useState(false)
   const [ReferalCode, setReferalCode] = useState('')
+  const isLoading = useSelector(state => {
+    return state.auth.isLoading;
+  });
   const onSubmit = () => {
     console.log(ReferalCode,"refercodeeee")
     if (!mobileNumber) {
@@ -29,8 +34,16 @@ const Login = () => {
       setError('InValid Number')
     }
     else {
+      let data = {
+        // refercode: ReferalCode,
+        // mobile_number: mobileNumber,
+        // resend: true,
+        phoneNumber : mobileNumber, 
+        isoCode : "IN"
+      };
       setError('');
-      navigation.navigate('MYBATTLEOTP', { phone: mobileNumber })
+      dispatch(userSignupNew(data, true))
+      // navigation.navigate('MYBATTLEOTP', { phone: mobileNumber })
     }
   }
   return (
@@ -61,6 +74,7 @@ const Login = () => {
                     placeholderTextColor={"#bbb"}
                     value={ReferalCode}
                     onChangeText={setReferalCode}
+                    maxLength={30}
                   />
                 </>
                 :
@@ -78,12 +92,13 @@ const Login = () => {
             </Text>
             <CommonButton title={'Get Started'} onPress={onSubmit} />
           </View>
-          <View style={{ marginTop: "10%", alignItems: 'center' }}>
+          <View style={{ marginTop: "8%", alignItems: 'center' }}>
             <Text style={styles.footer}>Version 1.0.0</Text>
             <Text style={styles.footer}>© MyChamp11. All Rights Reserved</Text>
           </View>
         </ScrollView>
       </LinearGradient>
+    <SpinnerSecond loading={isLoading} />
     </AppSafeAreaView>
   )
 }

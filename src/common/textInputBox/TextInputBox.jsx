@@ -2,7 +2,7 @@ import { StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
 
 const TextInputBox = ({placeholder,val,maxLength,setVal,keyboardType}) => {
-  console.log(val,"Valuesss")
+  // console.log(val,"Valuesss")
   return (
       <TextInput
         style={styles.input}

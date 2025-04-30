@@ -4,6 +4,8 @@ import LinearGradient from 'react-native-linear-gradient'
 import FastImage from 'react-native-fast-image'
 import { DemoUser, Gold, Notification, plusIcon, setting } from '../../helper/Image'
 import { colors } from '../../theme/Colors'
+import { Notification__SCREEN } from '../../navigation/routes'
+import NavigationService from '../../navigation/NavigationService'
 
 const HomeTopHeader = () => {
 return (
@@ -32,7 +34,7 @@ return (
           <TouchableOpacity style={[styles.ContainIcon,{marginLeft:4}]}>
             <FastImage source={setting} style={styles.icon} />
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.ContainIcon,{marginLeft:4}]}>
+          <TouchableOpacity onPress={() => NavigationService.navigate(Notification__SCREEN)} style={[styles.ContainIcon,{marginLeft:4}]}>
             <FastImage source={Notification} style={styles.icon} />
           </TouchableOpacity>
         </View>

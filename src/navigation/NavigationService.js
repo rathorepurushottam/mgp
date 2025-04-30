@@ -45,7 +45,7 @@ function closeDrawer() {
   navigator.dispatch(DrawerActions.closeDrawer());
 }
 
-function replace(routeName: string, params?: object) {
+function replace(routeName, params) {
   navigator.dispatch(StackActions.replace(routeName, params));
 }
 // add other navigation functions that you need and export them
