@@ -1,11 +1,10 @@
-import { ScrollView, StyleSheet, Text, ToastAndroid, Touchable, TouchableOpacity, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import { colors } from '../../theme/Colors'
 import FastImage from 'react-native-fast-image'
 import { mychampLogo } from '../../helper/Image'
 import CommonButton from '../../common/CommonButton/CommonButton'
-import OTPInputView from '@twotalltotems/react-native-otp-input'
 import { useNavigation } from '@react-navigation/native'
 import { OtpInput } from 'react-native-otp-entry'
 import { toastAlert } from '../../helper/Utility'
@@ -109,7 +108,6 @@ const Otp = ({ route }) => {
         </View>
       </ScrollView>
     </LinearGradient>
-
   )
 }
 

@@ -9,7 +9,9 @@ import Toast from 'react-native-toast-message';
 import { colors } from '../theme/Colors';
 import { AppText,POPPINS_MEDIUM, POPPINS_SEMI_BOLD } from '../common/appText/AppText';
 // export const BASE_URL = "http://103.175.163.162:5005/"
-export const BASE_URL = "http://103.110.127.91:3001/"
+// export const BASE_URL = "http://103.110.127.91:3001/"
+// https://c97e-2405-201-5c19-881b-2d66-4a04-f66d-e7e6.ngrok-free.app
+export const BASE_URL = "https://c97e-2405-201-5c19-881b-2d66-4a04-f66d-e7e6.ngrok-free.app/"
 
 export const shareToAny = (message) => {
   const shareOptions = {
