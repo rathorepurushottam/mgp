@@ -3,18 +3,18 @@
 import {GUEST_TYPE} from '../../types';
 
 export default appOperation => ({
-  login: data => appOperation.post('/user/signup', data, GUEST_TYPE),
-  register: data => appOperation.post('send-otp', data, GUEST_TYPE),
-  register1: data => appOperation.post('auth/sendOtp', data, GUEST_TYPE),
+  register: data => appOperation.post('auth/sendOtp', data, GUEST_TYPE),
+  // register: data => appOperation.post('send-otp', data, GUEST_TYPE),
+  // register1: data => appOperation.post('auth/sendOtp', data, GUEST_TYPE),
 
 
 
-  otp_verification: data => appOperation.post('user/signup', data, GUEST_TYPE),
+  otp_verification: data => appOperation.post('auth/verifyOtp', data, GUEST_TYPE),
 
-  otp_verificationNew: data => appOperation.post('auth/verifyOtp', data, GUEST_TYPE),
+  // otp_verificationNew: data => appOperation.post('auth/verifyOtp', data, GUEST_TYPE),
 
 
 
-  resend_otp: id =>
-    appOperation.get(`user/signup/${id}`, undefined, undefined, GUEST_TYPE),
+  // resend_otp: id =>
+  //   appOperation.get(`user/signup/${id}`, undefined, undefined, GUEST_TYPE),
 });

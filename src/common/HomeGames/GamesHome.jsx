@@ -1,26 +1,17 @@
-import { Dimensions, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { GameData } from '../../../assets/DummyData/DummyData';
 import FastImage from 'react-native-fast-image';
-import { useNavigation } from '@react-navigation/native';
-const { width } = Dimensions.get('window');
+import NavigationService from '../../navigation/NavigationService';
 
 
-
-const GamesHome = ({NativeModules}) => {
-    const navigation = useNavigation();
-
+const GamesHome = () => {
     const handleNavigation = (item) => {
-      navigation.navigate('LudoMain');
-    };
-
-    const openUnity = () => {
-      NativeModules.UnityModule.startUnity();
-      NativeModules.UnitySender.sendMessageToUnity('Hello Unity!');
+      NavigationService.navigate(item?.navigate);
     };
 
     const renderItem = ({ item }) => (
-        <TouchableOpacity activeOpacity={0.8} style={styles.card} onPress={handleNavigation}>
+        <TouchableOpacity activeOpacity={0.8} style={styles.card} onPress={() => handleNavigation(item)}>
           <FastImage
             source={item.image}
             style={styles.image}

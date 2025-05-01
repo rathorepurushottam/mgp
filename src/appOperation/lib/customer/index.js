@@ -3,8 +3,8 @@ import { CUSTOMER_TYPE } from '../../types';
 
 export default appOperation => ({
   log_out: data => appOperation.post(`client_logout`, data, CUSTOMER_TYPE),
-  get_profile: () =>
-    appOperation.get(`user/profile`, undefined, undefined, CUSTOMER_TYPE),
+  get_profile: (data) =>
+    appOperation.post(`mgpApp/users/getOwnProfile`, data, CUSTOMER_TYPE),
   get_wallet: () =>
     appOperation.get(`wallet/user-wallet`, undefined, undefined, CUSTOMER_TYPE),
   walletcreate: id =>

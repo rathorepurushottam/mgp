@@ -71,13 +71,13 @@ export const soundIcon = require('../../assets/images/soundIcon.png');
 export const HelpIcon = require('../../assets/images/HelpIcon.png');
 export const PanIcon = require('../../assets/images/PanIcon.png');
 
-export const bgludo = require('../../assets/images/bgludo.png');
+// export const bgludo = require('../../assets/images/bgludo.png');
 
 
-export const LUDO = require('../../assets/images/LUDO.png');
-export const people = require('../../assets/images/people.png');
+// export const LUDO = require('../../assets/images/LUDO.png');
+// export const people = require('../../assets/images/people.png');
 
-export const exclaim = require('../../assets/images/exclaim.png');
+// export const exclaim = require('../../assets/images/exclaim.png');
 
 
 export const MyChampScreen1 = require('../../assets/images/MyChampScreen1.png');

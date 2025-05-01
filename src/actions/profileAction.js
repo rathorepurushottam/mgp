@@ -6,6 +6,7 @@ import NavigationService from '../navigation/NavigationService';
 import {
   BOTTOM_NAVIGATION_STACK,
   BOTTOM_TAB_PROFILE_SCREEN,
+  LOGIN_SCREEN,
   MY_BALANCE,
   OTP,
 } from '../navigation/routes';
@@ -21,42 +22,37 @@ import {
   setUserWalletData,
 } from '../slices/profileSlice';
 import { setCreateWallet } from '../slices/matchSlice';
-import { toastAlert } from '../helper/Utility';
+import { logError, toastAlert } from '../helper/Utility';
 
 export const getUserProfile =
   (isNavigate = true, isUpdate = false) =>
     async (dispatch) => {
-      // console.log("Inside getUserprofiles")
       try {
         dispatch(setLoading(true));
-        // console.log("in 2222222222")
         const response = await appOperation.customer.get_profile();
-        // console.log("in 2333333333")
         if (response?.success) {
           dispatch(setAppVersion(response?.version));
-          isNavigate ? NavigationService.reset('BottomNavigation') : null;
-          isUpdate ? NavigationService.navigate('VerifyOtp') : null;
+          isNavigate ? NavigationService.reset(BOTTOM_NAVIGATION_STACK) : null;
+          isUpdate ? NavigationService.navigate(LOGIN_SCREEN) : null;
           dispatch(setUserData(response?.data));
-         
-          dispatch(setActivite(response.activity))
+          // dispatch(setActivite(response.activity));
           // dispatch(updateDeviceToken());
         } else {
           toastAlert.showToastError(response?.message);
         }
       } catch (e) {
         logError(e);
-        console.log(e,"errorrrrr")
         dispatch(userLogout());
         toastAlert.showToastError(e?.message);
       } finally {
         dispatch(setLoading(false));
-        console.log("finallyyyy")
+        console.log('finallyyyy');
       }
     };
 
 
 
-export const createWalletAPI = id => async (dispatch: Dispatch<any>) => {
+export const createWalletAPI = id => async (dispatch) => {
   try {
     dispatch(setLoading(true));
     const response = await appOperation.customer.walletcreate(id);
@@ -164,7 +160,7 @@ export const editProfile = (data, id) => async dispatch => {
     if (res?.code == 200) {
       toastAlert.showToastError(res?.message);
       dispatch(getUserProfile(false, true));
-      NavigationService.reset(BOTTOM_NAVIGATION_STACK)
+      NavigationService.reset(BOTTOM_NAVIGATION_STACK);
     }
     dispatch(setLoading(false));
   } catch (e) {

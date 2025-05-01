@@ -12,9 +12,8 @@ import Ranking from '../screens/Ranking/Ranking';
 import Shop from '../screens/Shops/Shop';
 import Wallet from '../screens/Wallet/Wallet';
 import Profile from '../screens/Profile/Profile';
-import { colors } from '../theme/Colors';
 import { BottomHomeIcon, BottomProfileIcon, BottomRankIcon, BottomShopIcon, BottomWalletIcon, ContestFantasy, home1, homeFantasy, HomeFantasy, profile, rakingBottomIcon, ranking, setting, shops, wallet } from '../helper/Image';
-import { Text, View } from 'react-native';
+import { Platform, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import LudoMain from '../screens/LudoMain/LudoMain';
 import WithDraw from '../screens/withDraw/WithDraw';
@@ -31,7 +30,7 @@ import FantasyHome from '../screens/fantasy/FantasyHome/FantasyHome';
 import Cricket from '../screens/fantasy/Cricket/Cricket';
 import MatchCard from '../screens/fantasy/matchCard/MatchCard';
 import MyContest from '../screens/fantasy/myContest/MyContest';
-import { BOTTOM_TAB_CONTEST_SCREEN, LEADERBOARD, MY_CONTEST, Notification__SCREEN, PLAYER_PREVIEW, PLAYER_PREVIEW_TWO, SELECT_CAPTAIN, SELECT_PLAYER } from './routes';
+import { AUTH_LOADING_SCREEN, AUTHSTACK, BOTTOM_NAVIGATION_STACK, BOTTOM_TAB_CONTEST_SCREEN, LEADERBOARD, LOGIN_SCREEN, MY_CONTEST, Notification__SCREEN, OTP_SCREEN, PLAYER_PREVIEW, PLAYER_PREVIEW_TWO, SELECT_CAPTAIN, SELECT_PLAYER } from './routes';
 import SelectPlayer from '../screens/fantasy/selectPlayer/SelectPlayer';
 import LeaderBoard from '../screens/leaderboard/LeaderBoard';
 import Contests from '../screens/Contests/Contests';
@@ -49,9 +48,9 @@ const RootStackScreen = () => {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="AUTHLoading" component={AuthLoading} />
-      <Stack.Screen name="AUTHStack" component={AuthStack} />
-      <Stack.Screen name = {'BottomNavigation'} component={BottomNavigation}/>
+      <Stack.Screen name={AUTH_LOADING_SCREEN} component={AuthLoading} />
+      <Stack.Screen name={AUTHSTACK} component={AuthStack} />
+      <Stack.Screen name={BOTTOM_NAVIGATION_STACK} component={BottomNavigation}/>
       <Stack.Screen name="LudoMain" component={LudoMain}/>
       <Stack.Screen name="EditProfile" component={EditProfile}/>
       <Stack.Screen name="LudoHistory" component={LudoHistory}/>
@@ -80,16 +79,15 @@ const RootStackScreen = () => {
 };
 
 const AuthStack = () => {
-  const Stack = createNativeStackNavigator();
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name={'MYBATTLELOGIN'} component={Login} />
-      <Stack.Screen name={'MYBATTLEOTP'} component={Otp} />
-      <Stack.Screen name={'VerifyOtp'} component={VerifyOtp} />
-      <Stack.Screen name = {'BottomNavigation'} component={BottomNavigation}/>
+      <Stack.Screen name={LOGIN_SCREEN} component={Login} />
+      <Stack.Screen name={OTP_SCREEN} component={Otp} />
+      {/* <Stack.Screen name={'VerifyOtp'} component={VerifyOtp} /> */}
+      {/* <Stack.Screen name = {'BottomNavigation'} component={BottomNavigation}/> */}
     </Stack.Navigator>
   );
 };
@@ -141,8 +139,6 @@ const BottomNavigation = ()=>{
                   source={ranking}
                 />
            <View style={{height:7,width:7,borderRadius:5,backgroundColor:'#FBD25E',marginTop:5}} />
-
-
               <Text style={{ color: '#FBD25E', fontSize: 11,fontWeight:'500' }}>
                 Rank
               </Text>

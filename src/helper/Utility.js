@@ -1,5 +1,5 @@
 import { Platform, Share, ToastAndroid, View } from 'react-native';
-import { poppinsBold, } from '../theme/typography';
+import { poppinsBold } from '../theme/typography';
 
 import Toast from 'react-native-toast-message';
 
@@ -11,7 +11,7 @@ import { AppText,POPPINS_MEDIUM, POPPINS_SEMI_BOLD } from '../common/appText/App
 // export const BASE_URL = "http://103.175.163.162:5005/"
 // export const BASE_URL = "http://103.110.127.91:3001/"
 // https://c97e-2405-201-5c19-881b-2d66-4a04-f66d-e7e6.ngrok-free.app
-export const BASE_URL = "https://c97e-2405-201-5c19-881b-2d66-4a04-f66d-e7e6.ngrok-free.app/"
+export const BASE_URL = 'https://c97e-2405-201-5c19-881b-2d66-4a04-f66d-e7e6.ngrok-free.app/';
 
 export const shareToAny = (message) => {
   const shareOptions = {
@@ -30,9 +30,9 @@ export const checkValidAdharCardNumber = (adharNumber) => {
   return regex.test(adharNumber);
 };
 export const emailRegex = (email) => {
-  let regex = new RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)
+  let regex = new RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/);
   return regex.test(email);
-}
+};
 export const checkValidPanCardNumber = (panNumber) => {
   let regex = new RegExp(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/);
   return regex.test(panNumber);
@@ -92,9 +92,9 @@ export const iosToast = (message) => {
   Toast.show({
     type: 'success',
     text1: 'My Cham',
-    text2: `${message}`
-  })
-}
+    text2: `${message}`,
+  });
+};
 export const logError = error => {
 };
 export const modifyName = name => {
@@ -148,28 +148,28 @@ export const formatDate = (dateString) => {
   } else {
     return inputDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' ' + inputDate.toLocaleTimeString('en-US', timeOptions);
   }
-}
+};
 export const nameSlice = (name) => {
-  let nameTwo = name.split(' ')[0]
+  let nameTwo = name.split(' ')[0];
   if (nameTwo.length > 8) {
-    const truncatedName = nameTwo.slice(0, 6) + "..";
-    return truncatedName
+    const truncatedName = nameTwo.slice(0, 6) + '..';
+    return truncatedName;
   } else {
-    return nameTwo
+    return nameTwo;
   }
-}
+};
 export const nameSliceTwo = (name) => {
-  let nameTwo = name.split(' ')[0]
+  let nameTwo = name.split(' ')[0];
   if (nameTwo.length > 5) {
-    const truncatedName = nameTwo.slice(0, 5) + "..";
-    return truncatedName
+    const truncatedName = nameTwo.slice(0, 5) + '..';
+    return truncatedName;
   } else {
-    return nameTwo
+    return nameTwo;
   }
-}
+};
 export const transformData = (originalData) => {
-  return originalData
-  
+  return originalData;
+
   // && originalData?.map((contest) => {
   //   const { name, winning_amount, more, data } = contest;
   //   const transformedContestData = data
@@ -188,148 +188,148 @@ export const transformData = (originalData) => {
 export const playerRollImage = (SUBSID, array) => {
   if (SUBSID === 'SUB-1') {
     if (array[0]?.profile_image) {
-      return { uri: array[0]?.profile_image }
+      return { uri: array[0]?.profile_image };
     } else if (array[0]?.playing_role === 'wk') {
-      return wicket_keeperIcon
+      return wicket_keeperIcon;
     } else if (array[0]?.playing_role === 'bowl') {
-      return bowlerIcon
+      return bowlerIcon;
     } else if (array[0]?.playing_role === 'bat') {
-      return batsmanIcon
+      return batsmanIcon;
     } else if (array[0]?.playing_role === 'all') {
-      return all_rounderIcon
+      return all_rounderIcon;
     }
   } else if (SUBSID === 'SUB-2') {
     if (array[0]?.profile_image) {
-      return { uri: array[0]?.profile_image }
+      return { uri: array[0]?.profile_image };
     } else if (array[0]?.playing_role === 'wk') {
-      return wicket_keeperIcon
+      return wicket_keeperIcon;
     } else if (array[0]?.playing_role === 'bowl') {
-      return bowlerIcon
+      return bowlerIcon;
     } else if (array[0]?.playing_role === 'bat') {
-      return batsmanIcon
+      return batsmanIcon;
     } else if (array[0]?.playing_role === 'all') {
-      return all_rounderIcon
+      return all_rounderIcon;
     }
   } else if (SUBSID === 'SUB-3') {
     if (array[0]?.profile_image) {
-      return { uri: array[0]?.profile_image }
+      return { uri: array[0]?.profile_image };
     } else if (array[0]?.playing_role === 'wk') {
-      return wicket_keeperIcon
+      return wicket_keeperIcon;
     } else if (array[0]?.playing_role === 'bowl') {
-      return bowlerIcon
+      return bowlerIcon;
     } else if (array[0]?.playing_role === 'bat') {
-      return batsmanIcon
+      return batsmanIcon;
     } else if (array[0]?.playing_role === 'all') {
-      return all_rounderIcon
+      return all_rounderIcon;
     }
   } else if (SUBSID === 'SUB-4') {
     if (array[0]?.profile_image) {
-      return { uri: array[0]?.profile_image }
+      return { uri: array[0]?.profile_image };
     } else if (array[0]?.playing_role === 'wk') {
-      return wicket_keeperIcon
+      return wicket_keeperIcon;
     } else if (array[0]?.playing_role === 'bowl') {
-      return bowlerIcon
+      return bowlerIcon;
     } else if (array[0]?.playing_role === 'bat') {
-      return batsmanIcon
+      return batsmanIcon;
     } else if (array[0]?.playing_role === 'all') {
-      return all_rounderIcon
+      return all_rounderIcon;
     }
   }
-}
+};
 export const playerRollImageTwo = (array, arrayTwo) => {
   if (array?.numberid == '1' || arrayTwo?.numberid == '1') {
     if (array?.profile_image) {
-      return { uri: array?.profile_image }
+      return { uri: array?.profile_image };
     } else if (array?.playing_role === 'wk') {
-      return wicket_keeperIcon
+      return wicket_keeperIcon;
     } else if (array?.playing_role === 'bowl') {
-      return bowlerIcon
+      return bowlerIcon;
     } else if (array?.playing_role === 'bat') {
-      return batsmanIcon
+      return batsmanIcon;
     } else if (array?.playing_role === 'all') {
-      return all_rounderIcon
+      return all_rounderIcon;
     }
   } else if (array?.numberid == '2' || arrayTwo?.numberid == '2') {
     if (array?.profile_image) {
-      return { uri: array?.profile_image }
+      return { uri: array?.profile_image };
     } else if (array?.playing_role === 'wk') {
-      return wicket_keeperIcon
+      return wicket_keeperIcon;
     } else if (array?.playing_role === 'bowl') {
-      return bowlerIcon
+      return bowlerIcon;
     } else if (array?.playing_role === 'bat') {
-      return batsmanIcon
+      return batsmanIcon;
     } else if (array?.playing_role === 'all') {
-      return all_rounderIcon
+      return all_rounderIcon;
     }
   } else if (array?.numberid == '3' || arrayTwo?.numberid == '3') {
     if (array?.profile_image) {
-      return { uri: array?.profile_image }
+      return { uri: array?.profile_image };
     } else if (array?.playing_role === 'wk') {
-      return wicket_keeperIcon
+      return wicket_keeperIcon;
     } else if (array?.playing_role === 'bowl') {
-      return bowlerIcon
+      return bowlerIcon;
     } else if (array?.playing_role === 'bat') {
-      return batsmanIcon
+      return batsmanIcon;
     } else if (array?.playing_role === 'all') {
-      return all_rounderIcon
+      return all_rounderIcon;
     }
   } else if (array?.numberid == '4' || arrayTwo?.numberid == '4') {
     if (array?.profile_image) {
-      return { uri: array?.profile_image }
+      return { uri: array?.profile_image };
     } else if (array?.playing_role === 'wk') {
-      return wicket_keeperIcon
+      return wicket_keeperIcon;
     } else if (array?.playing_role === 'bowl') {
-      return bowlerIcon
+      return bowlerIcon;
     } else if (array?.playing_role === 'bat') {
-      return batsmanIcon
+      return batsmanIcon;
     } else if (array?.playing_role === 'all') {
-      return all_rounderIcon
+      return all_rounderIcon;
     }
   }
-}
+};
 export const playerRollImageThree = (array) => {
   if (array?.profile_image) {
-    return { uri: array?.profile_image }
+    return { uri: array?.profile_image };
   } else if (array?.playing_role === 'wk') {
-    return wicket_keeperIcon
+    return wicket_keeperIcon;
   } else if (array?.playing_role === 'bowl') {
-    return bowlerIcon
+    return bowlerIcon;
   } else if (array?.playing_role === 'bat') {
-    return batsmanIcon
+    return batsmanIcon;
   } else if (array?.playing_role === 'all') {
-    return all_rounderIcon
+    return all_rounderIcon;
   } else if (array?.profile_image) {
-    return { uri: array?.profile_image }
+    return { uri: array?.profile_image };
   } else if (array?.playing_role === 'wk') {
-    return wicket_keeperIcon
+    return wicket_keeperIcon;
   } else if (array?.playing_role === 'bowl') {
-    return bowlerIcon
+    return bowlerIcon;
   } else if (array?.playing_role === 'bat') {
-    return batsmanIcon
+    return batsmanIcon;
   } else if (array?.playing_role === 'all') {
-    return all_rounderIcon
+    return all_rounderIcon;
   } else if (array?.profile_image) {
-    return { uri: array?.profile_image }
+    return { uri: array?.profile_image };
   } else if (array?.playing_role === 'wk') {
-    return wicket_keeperIcon
+    return wicket_keeperIcon;
   } else if (array?.playing_role === 'bowl') {
-    return bowlerIcon
+    return bowlerIcon;
   } else if (array?.playing_role === 'bat') {
-    return batsmanIcon
+    return batsmanIcon;
   } else if (array?.playing_role === 'all') {
-    return all_rounderIcon
+    return all_rounderIcon;
   } else if (array?.profile_image) {
-    return { uri: array?.profile_image }
+    return { uri: array?.profile_image };
   } else if (array?.playing_role === 'wk') {
-    return wicket_keeperIcon
+    return wicket_keeperIcon;
   } else if (array?.playing_role === 'bowl') {
-    return bowlerIcon
+    return bowlerIcon;
   } else if (array?.playing_role === 'bat') {
-    return batsmanIcon
+    return batsmanIcon;
   } else if (array?.playing_role === 'all') {
-    return all_rounderIcon
+    return all_rounderIcon;
   }
-}
+};
 export const formatDateTime = (inputDateTime) => {
   // Convert the input string to a Date object
   const dateTime = new Date(inputDateTime);
@@ -352,7 +352,7 @@ export const formatDateTime = (inputDateTime) => {
   const formattedDateTime = `${formattedDate} ${formattedTime}`;
 
   return formattedDateTime;
-}
+};
 export const customSort = (a, b) => {
   if (a.playing11 === b.playing11) {
     return 0;
@@ -414,7 +414,7 @@ export const getPlayerStatus = (item) => {
             color: colors.brownYellow,
             marginLeft: 5,
             fontWeight: 700,
-            fontSize: 10
+            fontSize: 10,
           }}
           weight={POPPINS_MEDIUM}>
           Played last match
@@ -466,14 +466,14 @@ export const getPlayerIcon = (item) => {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.CAMERA,
         {
-          title: "Camera Permission",
-          message: "App needs access to your camera",
-          buttonNeutral: "Ask Me Later",
-          buttonNegative: "Cancel",
-          buttonPositive: "OK"
+          title: 'Camera Permission',
+          message: 'App needs access to your camera',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
         }
       );
       return granted === PermissionsAndroid.RESULTS.GRANTED;
     }
     return true;
-  }
+  };

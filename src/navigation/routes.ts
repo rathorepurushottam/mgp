@@ -29,7 +29,7 @@ export const UPLOAD_AADHAR = ' UPLOAD_AADHAR';
 export const HOME_PRIVACY = ' HOME_PRIVACY';
 
 export const Filter_Sheet = 'Filter_Sheet';
-export const OTP = 'OTP';
+export const OTP_SCREEN = 'OTP_SCREEN';
 export const CRICKET_MATCHES = 'CRICKET_MATCHES';
 export const LOGIN = 'LOGIN';
 export const Notification__SCREEN = 'Notification__SCREEN';

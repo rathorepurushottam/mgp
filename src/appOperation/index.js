@@ -20,7 +20,7 @@ export class AppOperation {
   customerToken;
   constructor() {
     this.base_url = BASE_URL;
-    console.log(this.customerToken,"customertokennnnn")
+    console.log(this.customerToken,'customertokennnnn');
     // this.base_url = 'http://103.175.163.162:5003/';
     this.root_path = '';
     this.admin = admin(this);
@@ -75,16 +75,17 @@ export class AppOperation {
 
     const headers = {
       'Content-Type': 'application/json',
+      'authorization': `${this.customerToken}`,
     };
 
-    if (this.customerToken && type === CUSTOMER_TYPE) {
-      headers['Authorization'] = `${this.customerToken}`;
-    }
-    else{
-      console.log(this.customerToken,CUSTOMER_TYPE,"customertokennn")
-    }
+    // if (this.customerToken && type === CUSTOMER_TYPE) {
+    //   headers.Authorization = `${this.customerToken}`;
+    // }
+    // else{
+    //   console.log(this.customerToken,CUSTOMER_TYPE,'customertokennn');
+    // }
 
-    
+
 
     return new Promise((resolve, reject) => {
       let bodyData = null;
@@ -98,7 +99,7 @@ export class AppOperation {
 
       fetch(uri, { method, headers, body: bodyData })
         .then(response => {
-          console.log(response, "response");
+          console.log(response, 'response');
           let status = response.status;
           if (response.ok) {
             return response
@@ -119,7 +120,7 @@ export class AppOperation {
             );
         })
         .catch(error => {
-          console.log(error,"error in ")
+          console.log(error,'error in ');
           const customError = this.getErrorMessageForResponse(error);
           reject(new ApiError(customError));
           // toastAlert.showToastError(error);
@@ -128,7 +129,7 @@ export class AppOperation {
   }
 
   getErrorMessageForResponse(data) {
-    let message = undefined;
+    let message;
     try {
       message = JSON.parse(data.data).message;
     } catch (e) {
