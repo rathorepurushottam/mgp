@@ -11,12 +11,12 @@ import PaymentMethodModal from '../../common/AddPaymentMethodModal/PaymentMethod
 const WithDraw = () => {
     const [amount, setAmount] = useState('20');
     const [modalvisible,setModalVisible] = useState(false);
-    const [from,setFrom] = useState('')
+    const [from,setFrom] = useState('');
 
     const addMethod = (val)=>{
         setFrom(val);
-        setModalVisible(true)
-    }
+        setModalVisible(true);
+    };
 
   return (
      <LinearGradient colors={["#01025C", '#121269']} style={styles.container}>
@@ -68,10 +68,10 @@ const WithDraw = () => {
       </ScrollView>
       <PaymentMethodModal modalvisible={modalvisible} setModalVisible={setModalVisible} from={from}/>
       </LinearGradient>
-  )
-}
+  );
+};
 
-export default WithDraw
+export default WithDraw;
 
 const styles = StyleSheet.create({
     container: {

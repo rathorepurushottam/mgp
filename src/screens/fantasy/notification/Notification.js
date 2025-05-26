@@ -30,8 +30,7 @@ const Notification = () => {
       </View>
     );
   }
-  state = {
-    data: [
+    let data =  [
       {
         name: 'GT vs RCB:Lineups has been announced',
         time: '6:10PM',
@@ -62,8 +61,24 @@ const Notification = () => {
         time: '6:10PM',
         header: 'Make your team now and earn real money.',
       },
-    ],
-  };
+    ];
+
+    const EmptyComponent = () => {
+      return (
+        <View style={{
+          flex: 1, alignItems: 'center',
+          justifyContent: "center"
+        }} >
+          <AppText
+            style={{ textAlign: 'center', marginTop: '-15%' }}
+            weight={POPPINS_SEMI_BOLD}
+            type={TWENTY}>
+            No Notification
+          </AppText>
+        </View>
+      );
+    };
+
   return (
     <AppSafeAreaView hidden={false} light={true}>
       {/* <StatusBar
@@ -78,27 +93,18 @@ const Notification = () => {
           from="Notification"
           commonHeader
         />
-        <View style={{
-          flex: 1, alignItems: 'center',
-          justifyContent: "center"
-        }} >
-          <AppText
-            style={{ textAlign: 'center', marginTop: '-15%' }}
-            weight={POPPINS_SEMI_BOLD}
-            type={TWENTY}>
-            No Notification
-          </AppText>
-        </View>
-        {/* <FlatList
+       
+        <FlatList
           style={{
             flex: 1,
             paddingHorizontal: universalPaddingHorizontal,
             marginTop:15
           }}
-          data={this.state.data}
+          data={data}
           renderItem={({item}) => <Item item={item} />}
           keyExtractor={item => item.email}
-        /> */}
+          ListEmptyComponent={EmptyComponent}
+        />
       </CommonImageBackground>
     </AppSafeAreaView>
   );

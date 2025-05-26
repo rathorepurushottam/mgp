@@ -8,19 +8,16 @@ import {
   OTP_SCREEN,
 } from '../navigation/routes';
 import {setLoading} from '../slices/authSlice';
-import {setUserData, setWalletCreate} from '../slices/profileSlice';
-import {getUserProfile} from './profileAction';
-import { Alert, Platform } from 'react-native';
+import {setUserData} from '../slices/profileSlice';
+import { Platform } from 'react-native';
 import { logError, toastAlert } from '../helper/Utility';
 import NavigationService from '../navigation/NavigationService';
-import { useDispatch } from 'react-redux';
+import { getUserProfile } from './profileAction';
 
 export const userSignup = (data, permissionSave) => async dispatch => {
-  console.log(data,'data in login');
   try {
     dispatch(setLoading(true));
     const response = await appOperation.guest.register(data);
-    console.log(response,'response in login');
     if (response?.success) {
       NavigationService.navigate(OTP_SCREEN, {
         data: data,
@@ -33,7 +30,7 @@ export const userSignup = (data, permissionSave) => async dispatch => {
       toastAlert.showToastError(response?.message);
     }
   } catch (e) {
-    console.log(e, '==er');
+    logError(e);
   } finally {
     dispatch(setLoading(false));
   }
@@ -42,27 +39,18 @@ export const userSignup = (data, permissionSave) => async dispatch => {
   export const otpVerification =
   (data, isAlert = false) =>
   async dispatch => {
-    console.log(data,'data in otp verify');
     try {
-
       dispatch(setLoading(true));
-      console.log('Insider otp verification');
       const response = await appOperation.guest.otp_verification(data);
-      console.log(response,'responseee in otp');
       if (response?.success) {
-        appOperation.setCustomerToken(response?.data?.tokenData?.token);
-        await AsyncStorage.setItem(USER_TOKEN_KEY, response?.data.tokenData?.token);
-        dispatch(updateDeviceToken());
-        // await dispatch(getUserProfile(true, false));
-        dispatch(setUserData(response?.data?._id));
+        appOperation.setCustomerToken(response?.data?.token);
+        await AsyncStorage.setItem(USER_TOKEN_KEY, response?.data?.token);
+        await dispatch(getUserProfile(true, false));
         toastAlert.showToastError(response?.message);
-        NavigationService.navigate(BOTTOM_NAVIGATION_STACK);
       } else {
         toastAlert.showToastError(response?.message);
-        console.log(response,'reponsesssssasd');
       }
     } catch (e) {
-      console.log(e,'errrorroororoororr');
       toastAlert.showToastError(e?.message);
       logError(e);
     } finally {

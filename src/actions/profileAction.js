@@ -20,6 +20,7 @@ import {
   setUserData,
   setAppVersion,
   setUserWalletData,
+  setRankingList,
 } from '../slices/profileSlice';
 import { setCreateWallet } from '../slices/matchSlice';
 import { logError, toastAlert } from '../helper/Utility';
@@ -30,11 +31,12 @@ export const getUserProfile =
       try {
         dispatch(setLoading(true));
         const response = await appOperation.customer.get_profile();
+        console.log(getUserProfile, 'getUserProfile');
         if (response?.success) {
-          dispatch(setAppVersion(response?.version));
+          dispatch(setUserData(response?.data));
+          // dispatch(setAppVersion(response?.version));
           isNavigate ? NavigationService.reset(BOTTOM_NAVIGATION_STACK) : null;
           isUpdate ? NavigationService.navigate(LOGIN_SCREEN) : null;
-          dispatch(setUserData(response?.data));
           // dispatch(setActivite(response.activity));
           // dispatch(updateDeviceToken());
         } else {
@@ -51,36 +53,54 @@ export const getUserProfile =
     };
 
 
+    export const getUserWallet = () => async dispatch => {
+      try {
+        dispatch(setLoading(true));
+        const response = await appOperation.customer.get_wallet();
+        if (response?.success) {
+          dispatch(setUserWalletData(response?.data));
+        }
+        dispatch(getUserProfile(false, false));
+      } catch (e) {
+        logError(e);
+        dispatch(setUserWalletData(undefined));
+      } finally {
+        dispatch(setLoading(false));
+      }
+    };
 
-export const createWalletAPI = id => async (dispatch) => {
-  try {
-    dispatch(setLoading(true));
-    const response = await appOperation.customer.walletcreate(id);
-    if (response?.status) {
-      dispatch(setCreateWallet(response?.data));
-    }
-  } catch (error) {
-    logError(error);
-  } finally {
-    dispatch(setLoading(false));
-  }
-};
+    export const getRanking = () => async dispatch => {
+      try {
+        dispatch(setLoading(true));
+        const response = await appOperation.customer.get_ranking();
+        if (response?.success) {
+          dispatch(setRankingList(response?.data));
+        }
+      } catch (e) {
+        logError(e);
+        dispatch(setUserWalletData(undefined));
+      } finally {
+        dispatch(setLoading(false));
+      }
+    };
 
-export const getUserWallet = () => async dispatch => {
-  try {
-    dispatch(setLoading(true));
-    const response = await appOperation.customer.get_wallet();
-    if (response?.success) {
-      dispatch(setUserWalletData(response?.data));
-    }
-    dispatch(getUserProfile(false, false));
-  } catch (e) {
-    logError(e);
-    dispatch(setUserWalletData(undefined));
-  } finally {
-    dispatch(setLoading(false));
-  }
-};
+
+
+// export const createWalletAPI = id => async (dispatch) => {
+//   try {
+//     dispatch(setLoading(true));
+//     const response = await appOperation.customer.walletcreate(id);
+//     if (response?.status) {
+//       dispatch(setCreateWallet(response?.data));
+//     }
+//   } catch (error) {
+//     logError(error);
+//   } finally {
+//     dispatch(setLoading(false));
+//   }
+// };
+
+
 export const getKycDetails = () => async dispatch => {
   try {
     const res = await appOperation.customer.getKycDetails();

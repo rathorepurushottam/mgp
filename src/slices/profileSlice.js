@@ -11,6 +11,7 @@ export const initialState = {
   walletCreateData: undefined,
   SaveActivite: undefined,
   appVersion: undefined,
+  rankingList: [],
 };
 export const profileSlice = createSlice({
   name: 'profile',
@@ -46,6 +47,9 @@ export const profileSlice = createSlice({
     setAppVersion: (state, { payload }) => {
       state.appVersion = payload;
     },
+    setRankingList: (state, { payload }) => {
+      state.rankingList = payload;
+    },
   },
 });
 
@@ -58,7 +62,8 @@ export const {
   setKycDetails,
   setActivite,
   setWalletCreate,
-  setAppVersion
+  setAppVersion,
+  setRankingList,
 } = profileSlice.actions;
 
 export default profileSlice.reducer;

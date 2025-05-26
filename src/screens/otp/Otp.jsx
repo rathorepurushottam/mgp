@@ -9,33 +9,34 @@ import { useNavigation } from '@react-navigation/native';
 import { OtpInput } from 'react-native-otp-entry';
 import { toastAlert } from '../../helper/Utility';
 import { useDispatch } from 'react-redux';
-import { otpVerification } from '../../actions/authActions';
+import { otpVerification, userSignup } from '../../actions/authActions';
 
 const Otp = ({ route }) => {
   const dispatch = useDispatch();
-  const {data: Number, id, permissionSave} = route?.params ?? {};
+  const {phoneNumber, referCode} = route?.params?.data ?? {};
   console.log(route?.params?.phone);
   const [code, setCode] = useState('');
   const navigation = useNavigation();
   const [error,setError] = useState('');
 
+  const handleResendOtp = () => {
+    let data = {
+      phoneNumber,
+      referCode,
+    };
+    dispatch(userSignup(data, true));
+  };
+
 
   const onSubmit = ()=>{
-    const verificationCode =  code;
-    console.log(code,'Otp submitted');
-    if(!code || code.length !== 4){
+    if(!code || code.length !== 6){
       toastAlert.showToastError('Enter Valide OTP');
       setError('Invalid OTP');
     }else{
       const data = {
-        // mobile_number: Number?.mobile_number,
-        // otp: verificationCode,
-        phoneNumber : Number?.phoneNumber,
-        isoCode : 'IN',
-        deviceType : 'Android',
-        otp : verificationCode,
-        ipAddress : '103.110.127.91:3000',
-        deviceId : '12',
+        phoneNumber,
+        otp : code,
+        referCode,
       };
       console.log(data,'data ub opt');
       dispatch(otpVerification(data));
@@ -58,7 +59,7 @@ const Otp = ({ route }) => {
           <Text style={styles.subHeading}>+91 {route?.params?.data?.phoneNumber}</Text>
 
           <OtpInput
-            numberOfDigits={4}
+            numberOfDigits={6}
             focusColor={colors.Green}
             autoFocus={true}
             hideStick={true}
@@ -78,7 +79,7 @@ const Otp = ({ route }) => {
             theme={{
               containerStyle:  error ? {marginTop : '10%',marginBottom:'2%'} : {marginVertical:'10%'},
               pinCodeContainerStyle: styles.pinCodeContainer,
-              pinCodeTextStyle: error ? {color:colors.ErrorColor} : {color:'#fff'},
+              pinCodeTextStyle: error ? {color:colors.ErrorColor} : {color:'#fff', fontSize: 12},
               focusStickStyle: styles.focusStick,
             }}
           />
@@ -90,7 +91,7 @@ const Otp = ({ route }) => {
           <View style={{ marginBottom: '10%' }}>
             <View style={styles.miniContainer}>
               <Text style={styles.subHeading}>Didn’t receive OTP? </Text>
-              <TouchableOpacity><Text style={styles.resend}>Resend Otp</Text></TouchableOpacity>
+              <TouchableOpacity onPress={handleResendOtp}><Text style={styles.resend}>Resend Otp</Text></TouchableOpacity>
             </View>
 
             <View style={styles.miniContainer}>
@@ -204,13 +205,13 @@ const styles = StyleSheet.create({
   },
   pinCodeContainer: {
     borderWidth: 2,
-    height:60,
-    width:60,
+    height:45,
+    width:45,
   },
-  subHeading: {
-    fontSize: 14,
-    color: '#fff',
-  },
+  // subHeading: {
+  //   fontSize: 14,
+  //   color: '#fff',
+  // },
   miniContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -221,10 +222,10 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
   },
-  footer: {
-    fontSize: 12,
-    color: '#bbb',
-    textAlign: 'center',
-  },
+  // footer: {
+  //   fontSize: 12,
+  //   color: '#bbb',
+  //   textAlign: 'center',
+  // },
 });
 export default Otp;

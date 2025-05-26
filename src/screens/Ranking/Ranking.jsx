@@ -1,5 +1,5 @@
 import { Dimensions, FlatList, Image, ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import ShopHeader from '../../common/shopHeader/ShopHeader'
 import { SceneMap, TabBar, TabView } from 'react-native-tab-view'
@@ -7,6 +7,8 @@ import { DailyTournament } from '../../../assets/DummyData/DummyData'
 import FastImage from 'react-native-fast-image'
 import { Winners, Winnersbg } from '../../helper/Image'
 import { colors } from '../../theme/Colors'
+import { useDispatch, useSelector } from 'react-redux'
+import { getRanking, getUserWallet } from '../../actions/profileAction'
 const Screen = {
   Width: Dimensions.get('window').width,
   Height: Dimensions.get('window').height,
@@ -107,12 +109,22 @@ const FirstRoute = () => <RankingList />;
 const SecondRoute = () => <RankingList />;
 
 const Ranking = () => {
+  const dispatch = useDispatch();
+  const rankingList = useSelector(state => {
+    return state.profile.rankingList;
+  });
+
+  useEffect(() => {
+    dispatch(getRanking());
+  }, []);
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     { key: 'first', title: 'Daily' },
     { key: 'second', title: 'Weekly' },
     { key: 'third', title: 'Monthly' },
   ]);
+
+  console.log(rankingList, 'rankingList');
 
   const renderScene = SceneMap({
     first: FirstRoute,
@@ -122,7 +134,6 @@ const Ranking = () => {
   return (
     <LinearGradient colors={[colors.BackgroundColorOne, colors.BackgroundColorTwo]} style={styles.container}>
       <ShopHeader title={"LEADERBOARD"} />
-
       <TabView
         navigationState={{ index, routes }}
         renderScene={renderScene}

@@ -3,7 +3,7 @@ import admin from './lib/admin';
 import guest from './lib/guest';
 import customer from './lib/customer';
 import { ADMIN_TYPE, CUSTOMER_TYPE } from './types';
-import { BASE_URL, toastAlert } from '../helper/Utility';
+import { BASE_URL } from '../helper/Utility';
 
 class ApiError extends Error {
   constructor(m) {
@@ -20,9 +20,9 @@ export class AppOperation {
   customerToken;
   constructor() {
     this.base_url = BASE_URL;
-    console.log(this.customerToken,'customertokennnnn');
+    // console.log(this.customerToken,'customertokennnnn');
     // this.base_url = 'http://103.175.163.162:5003/';
-    this.root_path = '';
+    this.root_path = 'v1/';
     this.admin = admin(this);
     this.guest = guest(this);
     this.customer = customer(this);
@@ -75,19 +75,24 @@ export class AppOperation {
 
     const headers = {
       'Content-Type': 'application/json',
-      'authorization': `${this.customerToken}`,
+      // 'Authorization': `Bearer ${this.customerToken}`,
     };
 
-    // if (this.customerToken && type === CUSTOMER_TYPE) {
-    //   headers.Authorization = `${this.customerToken}`;
-    // }
+    if (this.customerToken && type === CUSTOMER_TYPE) {
+      headers.Authorization = `Bearer ${this.customerToken}`;
+    }
     // else{
     //   console.log(this.customerToken,CUSTOMER_TYPE,'customertokennn');
     // }
 
-
-
     return new Promise((resolve, reject) => {
+      console.log({
+        uri,
+        method,
+        headers,
+        data,
+        ...params,
+      });
       let bodyData = null;
       if (data instanceof FormData) {
         bodyData = data;
@@ -98,26 +103,23 @@ export class AppOperation {
       }
 
       fetch(uri, { method, headers, body: bodyData })
-        .then(response => {
-          console.log(response, 'response');
+        .then(async response => {
+          // console.log(response, 'response');
           let status = response.status;
           if (response.ok) {
-            return response
-              .text()
-              .then(responseData => {
-                let jsonData = JSON.parse(responseData);
-                resolve({ ...jsonData, code: status });
-              })
-              .catch(errorResponse =>
-                Promise.reject({ code: status, data: errorResponse }),
-              );
+            try {
+              const responseData = await response
+                .text();
+              let jsonData = JSON.parse(responseData);
+              resolve({ ...jsonData, code: status });
+            } catch (errorResponse) {
+              return await Promise.reject({ code: status, data: errorResponse });
+            }
           }
           // Possible 401 or other network error
-          return response
-            .text()
-            .then(errorResponse =>
-              Promise.reject({ code: status, data: errorResponse }),
-            );
+          const errorResponse_1 = await response
+            .text();
+          return await Promise.reject({ code: status, data: errorResponse_1 });
         })
         .catch(error => {
           console.log(error,'error in ');

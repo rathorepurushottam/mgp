@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, TouchableOpacity ,StatusBar} from 'react-native';
+import React from 'react';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import {
   Notification__SCREEN,
 } from '../../navigation/routes';
@@ -9,15 +9,15 @@ import {
   myChampTextImg,
 } from '../../helper/Image';
 import FastImage from 'react-native-fast-image';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import NavigationService from '../../navigation/NavigationService';
 
 const FantasyHomeHeader = ({ personClick }) => {
-  const userData = useSelector(state => {
-    return state.profile.userData;
-  });
-  const {cash_bonus, winning_amount, totaldeposit } = userData ?? '';
-  let totalbalance = winning_amount + cash_bonus + totaldeposit;
+  // const userData = useSelector(state => {
+  //   return state.profile.userData;
+  // });
+  // const {cash_bonus, winning_amount, totaldeposit } = userData ?? '';
+  // let totalbalance = winning_amount + cash_bonus + totaldeposit;
   // useEffect(() => {
   //   setRandom(Math.random())
   // }, [total_balance])
@@ -36,7 +36,7 @@ const FantasyHomeHeader = ({ personClick }) => {
             onPress={personClick}>
               <FastImage
                 source={arrowleft}
-                resizeMode='contain'
+                resizeMode="contain"
                 style={{ height: 20, width: 20 }} />
           </TouchableOpacity>
           <FastImage
@@ -58,17 +58,17 @@ const FantasyHomeHeader = ({ personClick }) => {
     </>
   );
 };
-export default FantasyHomeHeader ;
+export default FantasyHomeHeader;
 
 const styles = StyleSheet.create({
   topContainer: {
     height: 60,
     width: '100%',
     paddingHorizontal: 10,
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 20,
-    justifyContent: "space-between"
+    flexDirection: 'row',
+    alignItems: 'center',
+    // marginTop: 20,
+    justifyContent: 'space-between',
   },
   personImage: {
     height: 28,
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   notificationIcon: {
     height: 28,
     width: 28,
-    right: 25
+    right: 25,
   },
   topBar: {
     flexDirection: 'row',
@@ -107,13 +107,13 @@ const styles = StyleSheet.create({
   },
   walletbox: {
     height: 28,
-    width: 28, backgroundColor: "#FFFFFF",
+    width: 28, backgroundColor: '#FFFFFF',
     borderRadius: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
     borderWidth: 1,
-    borderColor: "#DBA73E",
+    borderColor: '#DBA73E',
     right: 10,
   },
   logoview: {
@@ -122,8 +122,8 @@ const styles = StyleSheet.create({
   belldot: {
     height: 4,
     width: 4,
-    backgroundColor: "#EC536A",
-    position: "absolute",
+    backgroundColor: '#EC536A',
+    position: 'absolute',
     borderRadius: 10,
   },
   notifiView: {
@@ -134,5 +134,5 @@ const styles = StyleSheet.create({
     paddingLeft: 50,
     // backgroundColor: 'black',
     // borderWidth: 1
-  }
+  },
 });

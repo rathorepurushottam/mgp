@@ -393,35 +393,6 @@ const BottomNavFantasy = ()=>{
         tabBarIcon: ({focused}) => (
           <>
            {focused ? (
-              // <View
-              //   style={{
-              //     alignItems: 'center',
-              //     justifyContent: 'center',
-              //     marginTop: -30,
-              //   }}>
-              //   <View
-              //     style={{
-              //       width: 70,
-              //       height: 70,
-              //       borderRadius: 35,
-              //       borderWidth:6,
-              //       borderColor:'#121269',
-              //       backgroundColor: '#0b0c2a', // Background color for the circle
-              //       alignItems: 'center',
-              //       justifyContent: 'center',
-              //     }}>
-              //     <FastImage
-              //       resizeMode="contain"
-              //       style={{width: 35, height: 35}}
-              //       source={HomeFantasy}
-              //     />
-              //   </View>
-              //   <View style={{height:7,width:7,borderRadius:5,backgroundColor:'#FBD25E',marginTop:9}}></View>
-              //   <Text style={{color: '#f2c94c', fontSize: 10, marginTop: 5}}>
-              //     Home
-              //   </Text>
-              // </View>
-
               <View
                   style={{
                     alignItems: 'center',

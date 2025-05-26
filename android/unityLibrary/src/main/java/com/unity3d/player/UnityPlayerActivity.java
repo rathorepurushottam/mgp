@@ -16,6 +16,7 @@ import android.os.Process;
 
 public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecycleEvents, IUnityPermissionRequestSupport, IUnityPlayerSupport
 {
+    public static UnityPlayerActivity currentActivity;
     protected UnityPlayerForActivityOrService mUnityPlayer; // don't change the name of this variable; referenced from native code
 
     // Override this in your custom UnityPlayerActivity to tweak the command line arguments passed to the Unity Android Player
@@ -35,6 +36,7 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
     {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
+        currentActivity = this;
         String cmdLine = updateUnityCommandLineArguments(getIntent().getStringExtra("unity"));
         getIntent().putExtra("unity", cmdLine);
 
@@ -72,6 +74,9 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
     {
         mUnityPlayer.destroy();
         super.onDestroy();
+        if (currentActivity == this) {
+            currentActivity = null;
+        }
     }
 
     // If the activity is in multi window mode or resizing the activity is allowed we will use

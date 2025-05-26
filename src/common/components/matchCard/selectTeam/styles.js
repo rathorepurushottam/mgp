@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   closeImageContainer: {
-    padding: 10
+    padding: 10,
   },
   closeIcon: {
     height: 16,
@@ -13,17 +13,17 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     position: 'absolute',
-    bottom: 30,
+    bottom: 100,
     height: 50,
     width: '95%',
-    marginTop: 10,
+    // marginTop: 10,
     alignSelf: 'center',
   },
   btn: {
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10
+    borderRadius: 10,
   },
 });
 

@@ -8,30 +8,17 @@ import {getMyMatches} from '../../../../slices/matchSlice';
 import styles from './styles';
 import {
   AppText,
-  BROWNYELLOW,
-  EIGHTEEN,
-  FIRST,
   FORTEEN,
-  LIGHTPINK,
-  LIGHTWHITE,
   POPPINS_MEDIUM,
-  RED,
-  THIRTEEN,
-  TWELVE,
   WHITE,
-  BLACKOPACITY,
   CHAMPTHEME,
   POPPINS_BOLD,
 } from '../../../../common/appText/AppText';
-import {flexOne, universalPaddingHorizontal} from '../../../../theme/dimens';
-import {
-  BOTTOM_TAB_HOMESCREEN,
-} from '../../../../navigation/routes';
+import {flexOne} from '../../../../theme/dimens';
 
 
 import { AppSafeAreaView } from '../../../../common/AppSafeAreaView/AppSafeAreaView';
 import { SpinnerSecond } from '../../../../common/SpinnerSecond';
-import CommonImageBackground from '../../../../common/commonImageBackground/CommonImageBackground';
 import NavigationService from '../../../../navigation/NavigationService';
 import PrimaryButton from '../../../../common/primaryButton/PrimaryButton';
 import FantasyHomeHeader from '../../../../common/fantasyHomeHeader/fantasyHomeHeader';
@@ -43,12 +30,8 @@ export const RenderTabBar = props => {
   return (
     <TabBar
       {...props}
-      // contentContainerStyle={{
-      //   backgroundColor: 'rgba(0,0,0,0)'
-      // }}
-      renderLabel={({route, focused}) => 
+      renderLabel={({route, focused}) =>
       {
-        // console.log(route,"    ",focused,"insider mymatches")
         return(
         <View
           style={{
@@ -87,7 +70,7 @@ export const RenderTabBar = props => {
 };
 
 export const ListEmptyComponent = ({title, activeTab}) => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -140,7 +123,6 @@ export const ListEmptyComponent = ({title, activeTab}) => {
 
 const MyMatches = () => {
   const dispatch = useDispatch();
-  // const tabData = ['Upcoming', 'Live', 'Completed'];
   const [activeTab, setActiveTab] = useState('Upcoming');
   const data = useSelector(state => state?.match?.myMatchesData);
   const isLoading = useSelector(state => state?.match?.isLoading);
@@ -163,9 +145,6 @@ const MyMatches = () => {
     );
     dispatch(getMyMatches(title == 'Upcoming' ? 'Scheduled' : title));
   }, [index]);
-  // useEffect(() => {
-  //   dispatch(getMyMatches(activeTab == 'Upcoming' ? 'Scheduled' : activeTab));
-  // }, [activeTab]);
   const onRefresh = () => {
     if (activeTab == 'Upcoming') {
       dispatch(getMyMatches('Scheduled'));
@@ -185,11 +164,6 @@ const MyMatches = () => {
       />
     );
   };
-
-  // const changeTab = title => {
-  //   setActiveTab(title);
-  //   dispatch(getMyMatches(title == 'Upcoming' ? 'Scheduled' : title));
-  // };
   const reversedData = [...data].reverse();
 
   const FirstRoute = () => (
@@ -252,7 +226,6 @@ const MyMatches = () => {
   return (
     <AppSafeAreaView statusColor={true} hidden={false} light={true}style={{backgroundColor: colors.BackgroundColorTwo,paddingBottom:"18%",
             }}>
-      {/* <CommonImageBackground common> */}
        <LinearGradient colors={[colors.BackgroundColorOne,colors.BackgroundColorTwo]} style={{flex:1,}}>
         <FantasyHomeHeader
           walletIcon={true}
@@ -267,7 +240,6 @@ const MyMatches = () => {
           renderTabBar={props => <RenderTabBar {...props} style={{}} />}
         />
         </LinearGradient>
-      {/* </CommonImageBackground> */}
       <SpinnerSecond loading={isLoading} />
     </AppSafeAreaView>
   );

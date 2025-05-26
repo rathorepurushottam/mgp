@@ -1,23 +1,20 @@
 import {
     Dimensions,
     FlatList,
-    Pressable,
     View,
     TouchableOpacity,
   } from 'react-native';
   import React, { useEffect, useState } from 'react';
   import styles from './styles';
   import FastImage from 'react-native-fast-image';
-  
+
   import { CLOSE_WHITE_ICON, greenmark } from '../../../../helper/Image';
   import {
     AppText,
-    FORTEEN,
     POPPINS_BOLD,
     POPPINS_BOLD_ITALIC,
     POPPINS_SEMI_BOLD,
     SIXTEEN,
-    THIRTEEN,
     WHITE,
   } from '../../../../common/appText/AppText';
   import { useDispatch, useSelector } from 'react-redux';
@@ -36,34 +33,34 @@ import MyTeamSelect from '../myTeam/MyTeamSelect';
     const [selectedTeam, setSelectedTeam] = useState(null);
     const [isAdd, setIsAdd] = useState(false);
     const [saveTeamName, setSaveTeamName] = useState('');
-    const [selectMulty, setSelectMulty] = useState([])
+    const [selectMulty, setSelectMulty] = useState([]);
     const [random, setRandom] = useState(10);
     const [allSelects, setAllSelects] = useState(false);
     const onSelectTeam = item => {
       let checkingTeam = teamDetails?.filter((items) => {
-        return items?.team_id == item?._id
-      })
-      let lengthTeam = teamDetails?.length + selectMulty?.length
+        return items?.team_id === item?._id;
+      });
+      let lengthTeam = teamDetails?.length + selectMulty?.length;
       if (checkingTeam?.length) {
-        toastAlert.showToastError('You have already joined with this team')
+        toastAlert.showToastError('You have already joined with this team');
       } else if (JoinWithMULT) {
         if (selectMulty?.length) {
           let array = selectMulty?.findIndex((e) => {
-            return e?._id == item?._id
-          })
+            return e?._id === item?._id;
+          });
           if (array > -1) {
             selectMulty.splice(array, 1);
             setRandom(Math.random());
           } else {
-            if (joinWith == lengthTeam || joinWith == selectMulty?.length) {
-              toastAlert.showToastError(`You join only ${joinWith} teams`)
+            if (joinWith === lengthTeam || joinWith === selectMulty?.length) {
+              toastAlert.showToastError(`You join only ${joinWith} teams`);
             } else {
               selectMulty.push(item);
               setRandom(Math.random());
             }
           }
         } else {
-          setSelectMulty([item])
+          setSelectMulty([item]);
           setRandom(Math.random());
         }
       } else {
@@ -77,7 +74,7 @@ import MyTeamSelect from '../myTeam/MyTeamSelect';
         if (!selectedTeam) {
           return toastAlert.showToastError('Please Select Team Before Join Contest');
         }
-        setSaveTeamName(selectedTeam?.name)
+        setSaveTeamName(selectedTeam?.name);
         setIsAdd(true);
       }
     };
@@ -86,21 +83,21 @@ import MyTeamSelect from '../myTeam/MyTeamSelect';
         const teamIdToCheck = dataItem._id;
         return teamDetails?.some(item => item.team_id === teamIdToCheck);
       })
-      .map((filteredItem, index) => ({ ...filteredItem, already: index === 0 }))
+      .map((filteredItem, index) => ({ ...filteredItem, already: index === 0 }));
     const newData = myTeam?.filter(dataItem => {
       const teamIdToCheck = dataItem._id;
       return !filteredData?.some(item => item._id === teamIdToCheck);
     });
     const result = newData?.concat(filteredData);
 
-    console.log(result,"resultsss")
+    console.log(result,'resultsss');
     const renderMyTeam = ({ item }) => {
       let newid = selectMulty?.find(value => {
         return value._id == item._id;
       });
       let checkingTeam = teamDetails?.find((items) => {
-        return items?.team_id == item?._id
-      })
+        return items?.team_id == item?._id;
+      });
       return (
         <>
           {JoinWithMULT ?
@@ -113,7 +110,7 @@ import MyTeamSelect from '../myTeam/MyTeamSelect';
               checkingTeam={checkingTeam ? true : false}
               selectMulty={newid ? true : false}
               JoinWithMULT={JoinWithMULT}
-            /> 
+            />
             :
             <MyTeam
               item={item}
@@ -135,38 +132,38 @@ import MyTeamSelect from '../myTeam/MyTeamSelect';
         }
       }
       if (allSelects == true) {
-        setAllSelects(false)
-        setSelectMulty([])
-        setRandom(Math.random())
+        setAllSelects(false);
+        setSelectMulty([]);
+        setRandom(Math.random());
       } else {
-        setAllSelects(true)
-        setSelectMulty(filteredData?.length ? filteredData : myTeam)
-        setRandom(Math.random())
+        setAllSelects(true);
+        setSelectMulty(filteredData?.length ? filteredData : myTeam);
+        setRandom(Math.random());
       }
-    }
+    };
     useEffect(() => {
       const filteredData = myTeam?.filter(dataItem => {
         const teamIdToCheck = dataItem?._id;
         return teamDetails?.some(item => item?.team_id === teamIdToCheck);
       });
-      let length = myTeam?.length - filteredData?.length
-      const lengthTwo = selectMulty?.length
+      let length = myTeam?.length - filteredData?.length;
+      const lengthTwo = selectMulty?.length;
       if (lengthTwo == length) {
-        setAllSelects(true)
-        setRandom(Math.random())
+        setAllSelects(true);
+        setRandom(Math.random());
       } else {
-        setAllSelects(false)
-        setRandom(Math.random())
+        setAllSelects(false);
+        setRandom(Math.random());
       }
-    }, [selectMulty?.length])
+    }, [selectMulty?.length]);
     return (
       <View style={styles.container}>
         <View style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
           paddingHorizontal: universalPaddingHorizontal,
-          marginTop: 10
+          marginTop: 10,
         }}>
           <TouchableOpacity style={styles.closeImageContainer} onPress={onClose}>
             <FastImage
@@ -179,14 +176,14 @@ import MyTeamSelect from '../myTeam/MyTeamSelect';
           <AppText
             weight={POPPINS_BOLD}
             type={SIXTEEN}
-            style={{ textAlign: 'center', marginLeft: "15%" }}>
+            style={{ textAlign: 'center', marginLeft: '15%' }}>
             Select Your Team
           </AppText>
           {JoinWithMULT ?
             <TouchableOpacity
               onPress={allSelect} style={{
                 flexDirection: 'row',
-                alignItems: "center"
+                alignItems: 'center',
               }}>
               <AppText weight={POPPINS_SEMI_BOLD} color={WHITE} type={SIXTEEN}>
                 Select All{'  '}
@@ -203,12 +200,12 @@ import MyTeamSelect from '../myTeam/MyTeamSelect';
                 {allSelects ?
                   <FastImage
                     source={greenmark}
-                    resizeMode='contain'
+                    resizeMode="contain"
                     tintColor={'white'}
                     style={{
                       height: 12,
                       width: 12,
-                      marginRight: 1
+                      marginRight: 1,
                     }}
                   /> : <></>
                 }
@@ -257,6 +254,5 @@ import MyTeamSelect from '../myTeam/MyTeamSelect';
       </View>
     );
   };
-  
+
   export default SelectTeam;
-  

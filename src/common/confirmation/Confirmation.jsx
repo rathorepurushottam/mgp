@@ -1,4 +1,3 @@
-/* eslint-disable react/self-closing-comp */
 import React from 'react';
 import { Dimensions, Modal, Pressable, StyleSheet, View , TouchableOpacity} from 'react-native';
 import {
@@ -6,12 +5,10 @@ import {
   EIGHTEEN,
   FORTEEN,
   LATO_SEMI_BOLD,
-  LIGHTBLUE,
   POPPINS_BOLD,
   POPPINS_BOLD_ITALIC,
   SEMI_BOLD,
   SIXTEEN,
-  THIRTEEN,
   WHITE,
 } from '../../common/appText/AppText';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,19 +16,13 @@ import FastImage from 'react-native-fast-image';
 import { CLOSE_WHITE_ICON } from '../../helper/Image';
 import { poppinsBoldItalic } from '../../theme/typography';
 import {
-  getContestList,
-  getMyJoinedContest,
-  getMyTeam,
   joinContest,
   setContestData,
   setcreateContest,
 } from '../../slices/matchSlice';
 import NavigationService from '../../navigation/NavigationService';
 import {
-  ADD_MONEY_SCREEN,
-  MY_BALANCE,
   MY_CONTEST,
-  PAYMENT_OPTIONS_SCREEN,
 } from '../../navigation/routes';
 import { fixedToTwo } from '../../helper/Utility';
 import LinearGradient from 'react-native-linear-gradient';
@@ -43,13 +34,9 @@ const Confirmation = ({
   details,
   matchDetails,
   onClose,
-  selectedTeam,
-  teamLength,
-  teamName,
   saveTeamName,
   selectMulty,
   JoinWithMULT,
-  privateContest
 }) => {
   const dispatch = useDispatch();
   const myTeam = useSelector(state => state?.match?.myTeams);
@@ -67,11 +54,11 @@ const Confirmation = ({
   const contestData = useSelector(state => state?.match?.contestData);
   const { EnteryFee, UsableBonusPercantage, contest_category_id, inner_data_id } =
     selectedMatch ?? '';
-  const { _id: matchDetails_id } = matchDetails ?? '';
+  // const { _id: matchDetails_id } = matchDetails ?? '';
   const { match_id, matchid, _id } = myTeam[0] ?? '';
   const { cash_bonus, totaldeposit } = userData ?? '';
   const newAmount = totaldeposit + userData?.winning_amount;
-  const sumOfTotal = totaldeposit + userData?.winning_amount + cash_bonus
+  const sumOfTotal = totaldeposit + userData?.winning_amount + cash_bonus;
   let usable =
     (Number(
       CreateContestData?.EnteryFee ? CreateContestData?.EnteryFee : EnteryFee,
@@ -90,8 +77,8 @@ const Confirmation = ({
     ? CreateContestData?.EnteryFee - Number(usableBonus)
     : Number(EnteryFee) - Number(usableBonus)
     }`;
-  const { _id: contestListId, } = contestData ?? '';
-  const payTotalAmount = selectMulty?.length ? payAmount * selectMulty?.length : payAmount
+  const { _id: contestListId } = contestData ?? '';
+  const payTotalAmount = selectMulty?.length ? payAmount * selectMulty?.length : payAmount;
 
   const onSubmit = () => {
     if (CreateContestData?.EnteryFee) {
@@ -115,13 +102,13 @@ const Confirmation = ({
             teamName: selectMulty[index]?.name,
             shadow_contest_id: details?.shadow_contest_id,
           };
-          arofobj?.push(data)
+          arofobj?.push(data);
         }
         let data = {
           mutiple: true,
-          arofobj: arofobj
-        }
-        console.log(data, "join constest multi true");
+          arofobj: arofobj,
+        };
+        console.log(data, 'join constest multi true');
         setIsModalVisible(false);
         dispatch(joinContest(data, matchDetails));
         onClose ? onClose() : null;
@@ -141,7 +128,7 @@ const Confirmation = ({
           teamName: FilterId?.name,
           shadow_contest_id: details?.shadow_contest_id,
         };
-        console.log(data, "join constest multi false");
+        console.log(data, 'join constest multi false');
         setIsModalVisible(false);
         dispatch(joinContest(data, matchDetails));
         onClose ? onClose() : null;
@@ -153,13 +140,12 @@ const Confirmation = ({
     } else {
       setIsModalVisible(false);
       onClose ? onClose() : null;
-      NavigationService.navigate('BottomNavigation', {
+      NavigationService.navigate('BottomNavFantasy', {
         screen: 'Wallet',
         ...selectedMatch,
         matchDetails: matchDetails,
         usableBonus,
         payAmount,
-        // total_balance,
         value: payAmount,
       });
     }
@@ -282,7 +268,7 @@ const Confirmation = ({
                   color: 'white',
                 }}
                 weight={POPPINS_BOLD}>
-                {payTotalAmount <= totaldeposit+cash_bonus ? 'Join contest' : 'Add cash'}
+                {payTotalAmount <= totaldeposit + cash_bonus ? 'Join contest' : 'Add cash'}
               </AppText>
             </LinearGradient>
           </TouchableOpacity>
@@ -294,7 +280,7 @@ const Confirmation = ({
             btnStyle={{
               borderWidth:0,
             }}
-            buttonViewStyle={{height: 45, 
+            buttonViewStyle={{height: 45,
               borderRadius:8,
               backgroundColor:'#5389C4'}}
           /> */}
@@ -314,11 +300,9 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     width: Dimensions.get('window').width - 20,
-    // height: 243,
     backgroundColor: NewColor.linerWhite,
     borderRadius: 16,
     overflow: 'hidden',
-    // justifyContent: 'space-between',
     paddingBottom: 20,
   },
   modalTopSection: {
@@ -342,7 +326,6 @@ const styles = StyleSheet.create({
   editButtonTitle: {
     fontSize: 18,
     fontFamily: poppinsBoldItalic,
-    // fontStyle: 'italic',
   },
   detailsStyle: {
     borderWidth: 1,

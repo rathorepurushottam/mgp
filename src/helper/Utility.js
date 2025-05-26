@@ -1,17 +1,13 @@
-import { Platform, Share, ToastAndroid, View } from 'react-native';
+import { PermissionsAndroid, Platform, Share, ToastAndroid, View } from 'react-native';
 import { poppinsBold } from '../theme/typography';
-
 import Toast from 'react-native-toast-message';
-
-
-
-
 import { colors } from '../theme/Colors';
 import { AppText,POPPINS_MEDIUM, POPPINS_SEMI_BOLD } from '../common/appText/AppText';
-// export const BASE_URL = "http://103.175.163.162:5005/"
-// export const BASE_URL = "http://103.110.127.91:3001/"
-// https://c97e-2405-201-5c19-881b-2d66-4a04-f66d-e7e6.ngrok-free.app
-export const BASE_URL = 'https://c97e-2405-201-5c19-881b-2d66-4a04-f66d-e7e6.ngrok-free.app/';
+import { all_rounderIcon, batsmanIcon, bowlerIcon, wicket_keeperIcon } from './Image';
+export const BASE_URL = 'http://103.110.127.91:5132/';
+export const CRICKET_SCOKET_URL = 'http://103.110.127.91:5000/';
+
+// export const BASE_URL = 'https://3b6e-2405-201-5c19-881b-cd27-eaee-6cd8-b9a4.ngrok-free.app/';
 
 export const shareToAny = (message) => {
   const shareOptions = {
@@ -476,4 +472,16 @@ export const getPlayerIcon = (item) => {
       return granted === PermissionsAndroid.RESULTS.GRANTED;
     }
     return true;
+  };
+
+
+  export function formatNumber(num) {
+    if (num >= 100000) {
+      // Convert to Lakh (L)
+      return (num / 100000)?.toFixed(2)?.replace(/\.00$/, '') + 'L';
+    } else if (num >= 1000) {
+      // Convert to Thousand (K)
+      return (num / 1000)?.toFixed(2)?.replace(/\.00$/, '') + 'K';
+    }
+    return num?.toString(); // Return as is for smaller numbers
   };

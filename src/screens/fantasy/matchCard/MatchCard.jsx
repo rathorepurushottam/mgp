@@ -69,7 +69,7 @@ const MatchCard = ({
     if (details?.Status === 'Completed') {
       dispatch(setContestData({...details, isFromMyMatch, tab, isHome}));
       NavigationService.navigate(MY_CONTEST, {isFromMyMatch: true});
-    } else if (details?.contest_details?.length == 0) {
+    } else if (details?.contest_details?.length === 0) {
       return toastAlert.showToastError('There Are No Contest For This Match');
     } else {
       dispatch(setContestData({...details, isFromMyMatch, tab, isHome}));

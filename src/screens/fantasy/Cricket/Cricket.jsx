@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState, useRef, useEffect } from 'react';
 import {
   View,
@@ -8,19 +7,15 @@ import {
   RefreshControl,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-
-// import ViewAll from '../../components/matchCard/viewAll/ViewAll';
-
-
 import MatchCard from '../matchCard/MatchCard';
 import Matchsection ,{getDate } from '../matchCard/matchSection/MatchSection';
 import { universalPaddingHorizontal } from '../../../theme/dimens';
-import { BASE_URL } from '../../../helper/Utility';
+import { CRICKET_SCOKET_URL } from '../../../helper/Utility';
 import { setMyMatchesHome ,setUpComingMatches} from '../../../slices/matchSlice';
 import { AppText,  EIGHTEEN,
     POPPINS_MEDIUM,
     POPPINS_SEMI_BOLD,
-    WHITE, } from '../../../common/appText/AppText';
+    WHITE } from '../../../common/appText/AppText';
 import { KeyBoardAware } from '../../../common/KeyBoardAware/KeyBoardAware';
 import { BOTTOM_TAB_CONTEST_SCREEN } from '../../../navigation/routes';
 import ViewAll from '../../../common/components/matchCard/viewAll/ViewAll';
@@ -35,7 +30,7 @@ const Cricket = ({ random, setRefreshingTwo }) => {
   const userData = useSelector(state => {
     return state.profile.userData;
   });
-  console.log(userData,"userDataa")
+  // console.log(userData,'userDataa');
   const  _id  = userData?._id  ? userData?._id  : userData;
   const [isMoadlVisible, setIsModalVisible] = useState(false);
   const [intro, setIntro] = useState([]);
@@ -43,19 +38,19 @@ const Cricket = ({ random, setRefreshingTwo }) => {
   const [refershing, setRefreshing] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [ForConnectedTo, setForConnectedTo] = useState(false);
-  const URL = `${BASE_URL}upcoming-matches?limit=20&skip=0&userid=${_id}`;
+  // const URL = `${CRICKET_SCOKET_URL}upcoming-matches?limit=20&skip=0&userid=${_id}`;
   useEffect(() => {
     if (_id && _id) {
-      onRefresh(_id)
+      onRefresh(_id);
     } else {
-      console.log('Hellooo')
+      console.log('Hellooo');
     }
-  }, [random])
+  }, [random]);
   useEffect(() => {
     const interval = setInterval(() => {
       const itemIndex = upcomingMatches.findIndex(search);
       let tempArray = [...upcomingMatches];
-      if (itemIndex !== -1 && upcomingMatches?.length !== 0) {``
+      if (itemIndex !== -1 && upcomingMatches?.length !== 0) {'';
         tempArray?.splice(itemIndex, 1);
         dispatch(setUpComingMatches(tempArray));
       }
@@ -68,7 +63,8 @@ const Cricket = ({ random, setRefreshingTwo }) => {
     }
   }, [upcomingMatches]);
   const onRefresh = React.useCallback((_id) => {
-    const URL = `${BASE_URL}upcoming-matches?limit=20&skip=0&userid=${_id}`;
+    const URL = `${CRICKET_SCOKET_URL}upcoming-matches?limit=20&skip=0&userid=${_id}`;
+    console.log(URL, "URL");
     setRefreshing(true);
     setRefreshingTwo(true);
     // Disconnect the WebSocket if it's already connected
@@ -82,11 +78,11 @@ const Cricket = ({ random, setRefreshingTwo }) => {
 
         setIsConnected(true); // Set the connection status to true
       };
-      if (!wsRef.current) return;
+      if (!wsRef.current) {return;}
       wsRef.current.onmessage = e => {
         const parseData = JSON.parse(e?.data);
         let temp = parseData?.upcoming;
-        // console.log(temp?.length, "setUpComingMatches");
+        console.log(temp?.length, "setUpComingMatches");
         dispatch(setUpComingMatches(temp));
         dispatch(setMyMatchesHome(parseData?.mymatches));
       };
@@ -99,8 +95,7 @@ const Cricket = ({ random, setRefreshingTwo }) => {
     }
   }, [isConnected]);
   const getData = React.useCallback((_id) => {
-    const URL = `${BASE_URL}upcoming-matches?limit=20&skip=0&userid=${_id}`;
-    console.log(URL,"urllllllsssss")
+    const URL = `${CRICKET_SCOKET_URL}upcoming-matches?limit=20&skip=0&userid=${_id}`;
     if (isConnected && wsRef.current) {
       wsRef.current.close();
       setIsConnected(false);
@@ -110,7 +105,7 @@ const Cricket = ({ random, setRefreshingTwo }) => {
       wsRef.current.onopen = () => {
         setIsConnected(true);
       };
-      if (!wsRef.current) return;
+      if (!wsRef.current) {return;}
       wsRef.current.onmessage = e => {
         const parseData = JSON.parse(e?.data);
         let temp = parseData?.upcoming;
@@ -124,9 +119,8 @@ const Cricket = ({ random, setRefreshingTwo }) => {
     }
   }, [isConnected]);
   useEffect(() => {
-    console.log(userData,"IDD11111122334e")
+    console.log(userData,'IDD11111122334e');
     if (_id && _id) {
-      console.log(_id,"iddddddd")
       if (!ForConnectedTo) {
         getData(_id);
         setForConnectedTo(true);
@@ -137,11 +131,10 @@ const Cricket = ({ random, setRefreshingTwo }) => {
         return () => clearInterval(interval);
       }
     } else {
-      console.log(_id, 'ID Nahi hai')
+      console.log(_id, 'ID Nahi hai');
     }
   }, [_id, userData]);
 
-  // console.log(upcomingMatches, "upcomingMatches");
   return (
     <View style={styles.container}>
       {myMatchesHome?.length !== 0 && (
@@ -158,7 +151,7 @@ const Cricket = ({ random, setRefreshingTwo }) => {
           </View>
           <View style={styles.two}>
             <ScrollView
-            
+
               showsHorizontalScrollIndicator={false}
               horizontal={true}>
               {myMatchesHome?.map((data, index) => {

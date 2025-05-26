@@ -22,7 +22,7 @@ const ShopHeader = ({title}) => {
       )
 }
 
-export default ShopHeader
+export default ShopHeader;
 
 const styles = StyleSheet.create({
      container:{
@@ -64,4 +64,4 @@ const styles = StyleSheet.create({
             borderColor:'#807b9c',
             paddingLeft:3,
         }
-})
+});

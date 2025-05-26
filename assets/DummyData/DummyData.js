@@ -25,13 +25,13 @@ export const GameData = [
         image :LudoIMage,
         navigate : 'LudoMain',
     },
-    {
-        id:2,
-        Label:'RUMMY',
-        image :RummyImage,
-        navigate : 'Contests',
+   //  {
+   //      id:2,
+   //      Label:'RUMMY',
+   //      image :RummyImage,
+   //      navigate : 'Contests',
 
-    },
+   //  },
     {
         id:3,
         Label:'FANTASY CRICKET',

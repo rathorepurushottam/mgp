@@ -1,0 +1,149 @@
+﻿#include "pch-c.h"
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+extern void MinMaxCurve__ctor_m1D3846251475D7BBC7B128CCD7DFF40B16AAEF9E (void);
+extern void MinMaxCurve__ctor_m4860D25A16881C1EDA5E4B9EC04430E272AFE531 (void);
+extern void MinMaxCurve_get_mode_m3501926642278B695E0CDFE2E24B641A560B9526 (void);
+extern void MinMaxCurve_get_curveMultiplier_m3C3EF4A373A3B2E51A4D27B88F7D1ADEA5B35936 (void);
+extern void MinMaxCurve_get_curveMax_m455705B0A048A51461E94DACD1503EA1DEAB68B8 (void);
+extern void MinMaxCurve_get_curveMin_m2F6041CAA8760D21D39A6204973B411D7109CF00 (void);
+extern void MinMaxCurve_get_constantMax_mBC9884017B40BDF911C768F521950370A6B41463 (void);
+extern void MinMaxCurve_get_constantMin_mB39AF05209B993DC31AB4247D9BE8D4F80E5D710 (void);
+extern void MinMaxCurve_get_constant_m4F2B7693C00CC9FAEDE1DAD32FEEE893414FBE91 (void);
+extern void MinMaxCurve_get_curve_mE735424B0F4A9F55699BD82254F159D4226F9661 (void);
+extern void MinMaxCurve_Evaluate_m61350D947722647E2C00D5FA7A3970A56326838B (void);
+extern void MinMaxGradient__ctor_m982C2A8AD071EA714E5583F90727C306B126F062 (void);
+extern void MinMaxGradient__ctor_m1C456463FD9B1BD7A72A31C95A851A0ECF249858 (void);
+extern void MinMaxGradient_get_mode_mC4B1A93FD93B41544AED855AB1FC520EC642AA98 (void);
+extern void MinMaxGradient_get_gradientMax_m94B2E99380FFCC82F0387C4B1E685DDD5B9C7947 (void);
+extern void MinMaxGradient_get_gradientMin_m906D46F5A5F72C83AF7651A910A97B616342DE4E (void);
+extern void MinMaxGradient_get_colorMax_mB9E445D4D3E2788B10EA785B0BA8A76015FEDD1C (void);
+extern void MinMaxGradient_get_colorMin_mD8698D56F1E88B7EE97638A3DC48AFC3FD2A6664 (void);
+extern void MinMaxGradient_get_color_m534E35D538D549F006E9F90E453D41B92FBAC3BF (void);
+extern void MinMaxGradient_get_gradient_m012030F7AEAE915DCC71C80674564E3FFD02FF9D (void);
+extern void MinMaxGradient_Evaluate_m424EA1B00F06F736AEB5FB2FE78DF59E774211C9 (void);
+extern void MinMaxGradient_Evaluate_mC4558A94B65CF9107047F5965B38E1932E1D16B5 (void);
+static Il2CppMethodPointer s_methodPointers[22] = 
+{
+	MinMaxCurve__ctor_m1D3846251475D7BBC7B128CCD7DFF40B16AAEF9E,
+	MinMaxCurve__ctor_m4860D25A16881C1EDA5E4B9EC04430E272AFE531,
+	MinMaxCurve_get_mode_m3501926642278B695E0CDFE2E24B641A560B9526,
+	MinMaxCurve_get_curveMultiplier_m3C3EF4A373A3B2E51A4D27B88F7D1ADEA5B35936,
+	MinMaxCurve_get_curveMax_m455705B0A048A51461E94DACD1503EA1DEAB68B8,
+	MinMaxCurve_get_curveMin_m2F6041CAA8760D21D39A6204973B411D7109CF00,
+	MinMaxCurve_get_constantMax_mBC9884017B40BDF911C768F521950370A6B41463,
+	MinMaxCurve_get_constantMin_mB39AF05209B993DC31AB4247D9BE8D4F80E5D710,
+	MinMaxCurve_get_constant_m4F2B7693C00CC9FAEDE1DAD32FEEE893414FBE91,
+	MinMaxCurve_get_curve_mE735424B0F4A9F55699BD82254F159D4226F9661,
+	MinMaxCurve_Evaluate_m61350D947722647E2C00D5FA7A3970A56326838B,
+	MinMaxGradient__ctor_m982C2A8AD071EA714E5583F90727C306B126F062,
+	MinMaxGradient__ctor_m1C456463FD9B1BD7A72A31C95A851A0ECF249858,
+	MinMaxGradient_get_mode_mC4B1A93FD93B41544AED855AB1FC520EC642AA98,
+	MinMaxGradient_get_gradientMax_m94B2E99380FFCC82F0387C4B1E685DDD5B9C7947,
+	MinMaxGradient_get_gradientMin_m906D46F5A5F72C83AF7651A910A97B616342DE4E,
+	MinMaxGradient_get_colorMax_mB9E445D4D3E2788B10EA785B0BA8A76015FEDD1C,
+	MinMaxGradient_get_colorMin_mD8698D56F1E88B7EE97638A3DC48AFC3FD2A6664,
+	MinMaxGradient_get_color_m534E35D538D549F006E9F90E453D41B92FBAC3BF,
+	MinMaxGradient_get_gradient_m012030F7AEAE915DCC71C80674564E3FFD02FF9D,
+	MinMaxGradient_Evaluate_m424EA1B00F06F736AEB5FB2FE78DF59E774211C9,
+	MinMaxGradient_Evaluate_mC4558A94B65CF9107047F5965B38E1932E1D16B5,
+};
+extern void MinMaxCurve__ctor_m1D3846251475D7BBC7B128CCD7DFF40B16AAEF9E_AdjustorThunk (void);
+extern void MinMaxCurve__ctor_m4860D25A16881C1EDA5E4B9EC04430E272AFE531_AdjustorThunk (void);
+extern void MinMaxCurve_get_mode_m3501926642278B695E0CDFE2E24B641A560B9526_AdjustorThunk (void);
+extern void MinMaxCurve_get_curveMultiplier_m3C3EF4A373A3B2E51A4D27B88F7D1ADEA5B35936_AdjustorThunk (void);
+extern void MinMaxCurve_get_curveMax_m455705B0A048A51461E94DACD1503EA1DEAB68B8_AdjustorThunk (void);
+extern void MinMaxCurve_get_curveMin_m2F6041CAA8760D21D39A6204973B411D7109CF00_AdjustorThunk (void);
+extern void MinMaxCurve_get_constantMax_mBC9884017B40BDF911C768F521950370A6B41463_AdjustorThunk (void);
+extern void MinMaxCurve_get_constantMin_mB39AF05209B993DC31AB4247D9BE8D4F80E5D710_AdjustorThunk (void);
+extern void MinMaxCurve_get_constant_m4F2B7693C00CC9FAEDE1DAD32FEEE893414FBE91_AdjustorThunk (void);
+extern void MinMaxCurve_get_curve_mE735424B0F4A9F55699BD82254F159D4226F9661_AdjustorThunk (void);
+extern void MinMaxCurve_Evaluate_m61350D947722647E2C00D5FA7A3970A56326838B_AdjustorThunk (void);
+extern void MinMaxGradient__ctor_m982C2A8AD071EA714E5583F90727C306B126F062_AdjustorThunk (void);
+extern void MinMaxGradient__ctor_m1C456463FD9B1BD7A72A31C95A851A0ECF249858_AdjustorThunk (void);
+extern void MinMaxGradient_get_mode_mC4B1A93FD93B41544AED855AB1FC520EC642AA98_AdjustorThunk (void);
+extern void MinMaxGradient_get_gradientMax_m94B2E99380FFCC82F0387C4B1E685DDD5B9C7947_AdjustorThunk (void);
+extern void MinMaxGradient_get_gradientMin_m906D46F5A5F72C83AF7651A910A97B616342DE4E_AdjustorThunk (void);
+extern void MinMaxGradient_get_colorMax_mB9E445D4D3E2788B10EA785B0BA8A76015FEDD1C_AdjustorThunk (void);
+extern void MinMaxGradient_get_colorMin_mD8698D56F1E88B7EE97638A3DC48AFC3FD2A6664_AdjustorThunk (void);
+extern void MinMaxGradient_get_color_m534E35D538D549F006E9F90E453D41B92FBAC3BF_AdjustorThunk (void);
+extern void MinMaxGradient_get_gradient_m012030F7AEAE915DCC71C80674564E3FFD02FF9D_AdjustorThunk (void);
+extern void MinMaxGradient_Evaluate_m424EA1B00F06F736AEB5FB2FE78DF59E774211C9_AdjustorThunk (void);
+extern void MinMaxGradient_Evaluate_mC4558A94B65CF9107047F5965B38E1932E1D16B5_AdjustorThunk (void);
+static Il2CppTokenAdjustorThunkPair s_adjustorThunks[22] = 
+{
+	{ 0x06000001, MinMaxCurve__ctor_m1D3846251475D7BBC7B128CCD7DFF40B16AAEF9E_AdjustorThunk },
+	{ 0x06000002, MinMaxCurve__ctor_m4860D25A16881C1EDA5E4B9EC04430E272AFE531_AdjustorThunk },
+	{ 0x06000003, MinMaxCurve_get_mode_m3501926642278B695E0CDFE2E24B641A560B9526_AdjustorThunk },
+	{ 0x06000004, MinMaxCurve_get_curveMultiplier_m3C3EF4A373A3B2E51A4D27B88F7D1ADEA5B35936_AdjustorThunk },
+	{ 0x06000005, MinMaxCurve_get_curveMax_m455705B0A048A51461E94DACD1503EA1DEAB68B8_AdjustorThunk },
+	{ 0x06000006, MinMaxCurve_get_curveMin_m2F6041CAA8760D21D39A6204973B411D7109CF00_AdjustorThunk },
+	{ 0x06000007, MinMaxCurve_get_constantMax_mBC9884017B40BDF911C768F521950370A6B41463_AdjustorThunk },
+	{ 0x06000008, MinMaxCurve_get_constantMin_mB39AF05209B993DC31AB4247D9BE8D4F80E5D710_AdjustorThunk },
+	{ 0x06000009, MinMaxCurve_get_constant_m4F2B7693C00CC9FAEDE1DAD32FEEE893414FBE91_AdjustorThunk },
+	{ 0x0600000A, MinMaxCurve_get_curve_mE735424B0F4A9F55699BD82254F159D4226F9661_AdjustorThunk },
+	{ 0x0600000B, MinMaxCurve_Evaluate_m61350D947722647E2C00D5FA7A3970A56326838B_AdjustorThunk },
+	{ 0x0600000C, MinMaxGradient__ctor_m982C2A8AD071EA714E5583F90727C306B126F062_AdjustorThunk },
+	{ 0x0600000D, MinMaxGradient__ctor_m1C456463FD9B1BD7A72A31C95A851A0ECF249858_AdjustorThunk },
+	{ 0x0600000E, MinMaxGradient_get_mode_mC4B1A93FD93B41544AED855AB1FC520EC642AA98_AdjustorThunk },
+	{ 0x0600000F, MinMaxGradient_get_gradientMax_m94B2E99380FFCC82F0387C4B1E685DDD5B9C7947_AdjustorThunk },
+	{ 0x06000010, MinMaxGradient_get_gradientMin_m906D46F5A5F72C83AF7651A910A97B616342DE4E_AdjustorThunk },
+	{ 0x06000011, MinMaxGradient_get_colorMax_mB9E445D4D3E2788B10EA785B0BA8A76015FEDD1C_AdjustorThunk },
+	{ 0x06000012, MinMaxGradient_get_colorMin_mD8698D56F1E88B7EE97638A3DC48AFC3FD2A6664_AdjustorThunk },
+	{ 0x06000013, MinMaxGradient_get_color_m534E35D538D549F006E9F90E453D41B92FBAC3BF_AdjustorThunk },
+	{ 0x06000014, MinMaxGradient_get_gradient_m012030F7AEAE915DCC71C80674564E3FFD02FF9D_AdjustorThunk },
+	{ 0x06000015, MinMaxGradient_Evaluate_m424EA1B00F06F736AEB5FB2FE78DF59E774211C9_AdjustorThunk },
+	{ 0x06000016, MinMaxGradient_Evaluate_mC4558A94B65CF9107047F5965B38E1932E1D16B5_AdjustorThunk },
+};
+static const int32_t s_InvokerIndices[22] = 
+{
+	7575,
+	4097,
+	9182,
+	9299,
+	9240,
+	9240,
+	9299,
+	9299,
+	9299,
+	9240,
+	3154,
+	7387,
+	7523,
+	9182,
+	9240,
+	9240,
+	9107,
+	9107,
+	9107,
+	9240,
+	5653,
+	2684,
+};
+IL2CPP_EXTERN_C const Il2CppCodeGenModule g_UnityEngine_ParticleSystemModule_CodeGenModule;
+const Il2CppCodeGenModule g_UnityEngine_ParticleSystemModule_CodeGenModule = 
+{
+	"UnityEngine.ParticleSystemModule.dll",
+	22,
+	s_methodPointers,
+	22,
+	s_adjustorThunks,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};

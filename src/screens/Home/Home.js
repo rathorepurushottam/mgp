@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import HomeTopHeader from '../../common/HomeHeader/HomeTopHeader';
@@ -7,22 +7,26 @@ import FastImage from 'react-native-fast-image';
 import {trophy} from '../../helper/Image';
 import GamesHome from '../../common/HomeGames/GamesHome';
 import {colors} from '../../theme/Colors';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {AppSafeAreaView} from '../../common/AppSafeAreaView/AppSafeAreaView';
+import { getUserWallet } from '../../actions/profileAction';
 
 const Home = () => {
+  const dispatch = useDispatch();
   const userData = useSelector(state => {
     return state.profile.userData;
   });
 
-  console.log(userData, 'userData');
+  useEffect(() => {
+    dispatch(getUserWallet());
+  }, []);
 
   return (
     <AppSafeAreaView light={true}>
       <LinearGradient
         colors={[colors.BackgroundColorOne, colors.BackgroundColorTwo]}
         style={styles.container}>
-        <HomeTopHeader />
+        <HomeTopHeader name={userData?.userName}/>
         <ScrollView
           showsVerticalScrollIndicator={false}
           style={{marginBottom: '18%'}}>

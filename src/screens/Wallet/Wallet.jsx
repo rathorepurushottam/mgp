@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -9,9 +9,19 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { useNavigation } from '@react-navigation/native';
 import { colors } from '../../theme/Colors';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserWallet } from '../../actions/profileAction';
 
 const Wallet = () => {
-  const navigation = useNavigation()
+  const dispatch = useDispatch();
+  const userWalletData = useSelector(state => {
+    return state.profile.userWalletData;
+  });
+  const navigation = useNavigation();
+  useEffect(() => {
+    dispatch(getUserWallet());
+  }, []);
+
   return (
      <LinearGradient colors={[colors.BackgroundColorOne, colors.BackgroundColorTwo]} style={styles.container}>
       <WalletHeader title="WALLET"/>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "150340065011",
+    "project_id": "mychamp11-25bd6",
+    "storage_bucket": "mychamp11-25bd6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150340065011:android:54e15d95678887c5460986",
+        "android_client_info": {
+          "package_name": "com.appinop.mychamp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCv0l3i9c6Uhog6wLd6zpICjCvIUChVOOc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -9,7 +9,7 @@ import { toastAlert, validateMobile } from '../../helper/Utility';
 import InputBox from '../../common/InputBox/InputBox';
 import { AppSafeAreaView } from '../../common/AppSafeAreaView/AppSafeAreaView';
 import { useDispatch, useSelector } from 'react-redux';
-import { userSignup, userSignupNew } from '../../actions/authActions';
+import { userSignup } from '../../actions/authActions';
 import { SpinnerSecond } from '../../common/SpinnerSecond';
 
 const Login = () => {
@@ -33,7 +33,7 @@ const Login = () => {
     else {
       let data = {
         phoneNumber : mobileNumber,
-        isoCode : 'IN',
+        referCode : ReferalCode,
       };
       setError('');
       dispatch(userSignup(data, true));
